@@ -1,1 +1,6 @@
-tile.ecopoiesisOre.name=Ecopoiesis Ore
+tile.oreEcopoiesis.name=Ecopoiesis Ore
+item.ingotEcopoiesis.name=Ecopoiesis Ingot
+item.axeEcopoiesis.name=Ecopoiesis Axe
+item.pickaxeEcopoiesis.name=Ecopoiesis Pickaxe
+item.swordEcopoiesis.name=Ecopoiesis Sword
+item.shovelEcopoiesis.name=Ecopoiesis Shovel

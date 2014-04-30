@@ -1,4 +1,4 @@
-package com.impactflux.terracraft;
+package com.impactflux.terracraft.blocks;
 
 import com.impactflux.terracraft.library.TerraCraftReference;
 
@@ -11,7 +11,7 @@ public class BlockEcopoiesisOre extends Block
 	public BlockEcopoiesisOre()
 	{
 		super(Material.rock);
-		setBlockName("ecopoiesisOre");
+		setBlockName("oreEcopoiesis");
 		setBlockTextureName(TerraCraftReference.MODID + ":" + getUnlocalizedName().substring(5));
 		setCreativeTab(CreativeTabs.tabBlock);
 		setStepSound(soundTypePiston);
