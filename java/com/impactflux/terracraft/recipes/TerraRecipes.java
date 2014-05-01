@@ -1,5 +1,6 @@
 package com.impactflux.terracraft.recipes;
 
+import com.impactflux.terracraft.blocks.TerraBlocks;
 import com.impactflux.terracraft.items.TerraItems;
 
 import net.minecraft.init.Items;
@@ -39,7 +40,37 @@ public class TerraRecipes
 			" Y ",
 			'X', TerraItems.ingotEcopoiesis, 'Y', Items.stick
 		});
+		
+		GameRegistry.addRecipe(new ItemStack(TerraItems.hoeEcopoiesis), new Object[]
+		{
+			"XX ",
+			" Y ",
+			" Y ",
+			'X', TerraItems.ingotEcopoiesis, 'Y', Items.stick
+		});
+		
+		ItemStack ecoNuggetStack = new ItemStack(TerraItems.nuggetEcopoiesis);
+		GameRegistry.addShapelessRecipe(new ItemStack(TerraItems.ingotEcopoiesis),
+				ecoNuggetStack, ecoNuggetStack, ecoNuggetStack,
+				ecoNuggetStack, ecoNuggetStack, ecoNuggetStack,
+				ecoNuggetStack, ecoNuggetStack, ecoNuggetStack);
+		
+		ItemStack ecoIngotStack = new ItemStack(TerraItems.ingotEcopoiesis);
+		GameRegistry.addShapelessRecipe(new ItemStack(TerraBlocks.blockEcopoiesis),
+				ecoIngotStack, ecoIngotStack, ecoIngotStack,
+				ecoIngotStack, ecoIngotStack, ecoIngotStack,
+				ecoIngotStack, ecoIngotStack, ecoIngotStack);
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(TerraItems.nuggetEcopoiesis), new ItemStack(TerraItems.ingotEcopoiesis));
 
+		
+	}
+	
+	public static void addFurnanceRecipes()
+	{
+		
+		GameRegistry.addSmelting(TerraBlocks.oreEcopoiesis, new ItemStack(TerraItems.ingotEcopoiesis), .9F);
+		
 		
 	}
 

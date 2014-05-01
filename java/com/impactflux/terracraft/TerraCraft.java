@@ -12,11 +12,14 @@ import com.impactflux.terracraft.items.ItemEcopoiesisIngot;
 import com.impactflux.terracraft.items.TerraItems;
 import com.impactflux.terracraft.library.RegisterHelper;
 import com.impactflux.terracraft.library.TerraCraftReference;
+import com.impactflux.terracraft.library.TerraCraftWorldGenerator;
 import com.impactflux.terracraft.recipes.TerraRecipes;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.util.EnumHelper;
 
 
@@ -32,6 +35,11 @@ public class TerraCraft
     public void preInit(FMLPreInitializationEvent event) 
     {
 		//
+		// Load configuration settings
+		//
+		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+		config.load();
+		//
 		// Load all blocks
 		//
 		TerraBlocks.loadBlocks();
@@ -42,11 +50,22 @@ public class TerraCraft
     	TerraItems.loadItems();
     	
     	//
-    	// Add all Recipes
+    	// Add all crafting Recipes
     	//
     	TerraRecipes.addRecipes();
-
+    	//
+    	// Add all furnance Recipes
+    	//
+    	TerraRecipes.addFurnanceRecipes();
     	
+    	//
+    	// Load world generation settings
+    	//
+    	GameRegistry.registerWorldGenerator(new TerraCraftWorldGenerator(), 0);
+		//
+		// Save configuration settings
+		//
+    	config.save();
     }
 
 }
