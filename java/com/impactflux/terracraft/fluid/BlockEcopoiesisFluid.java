@@ -6,6 +6,7 @@ import java.util.Random;
 import com.impactflux.terracraft.blocks.TerraBlocks;
 import com.impactflux.terracraft.library.TerraCraftReference;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -66,8 +67,7 @@ public class BlockEcopoiesisFluid extends BlockFluidClassic
                 world.getBlock(x,     y2, z + 1) == this)
             {
                 expQuanta = quantaPerBlock - 1;
-				world.setBlock(x, y, z, Blocks.stone, 1, 1);
-				world.markBlockForUpdate(x, y, z);
+                setEcoFlowingFluidBlock(world, x, y,  z);
             }
             else
             {
@@ -87,8 +87,7 @@ public class BlockEcopoiesisFluid extends BlockFluidClassic
 
                 if (expQuanta <= 0)
                 {
-    				world.setBlock(x, y, z, Blocks.stone, 1, 1);
-    				world.markBlockForUpdate(x, y, z);
+                	setEcoFlowingFluidBlock(world, x, y,  z);
                 }
                 else
                 {
@@ -115,8 +114,7 @@ public class BlockEcopoiesisFluid extends BlockFluidClassic
         int flowMeta = quantaPerBlock - quantaRemaining + 1;
         if (flowMeta >= quantaPerBlock)
         {
-			world.setBlock(x, y, z, Blocks.stone, 1, 1);
-			world.markBlockForUpdate(x, y, z);
+        	setEcoFlowingFluidBlock(world, x, y,  z);
             return;
         }
 
@@ -169,6 +167,22 @@ public class BlockEcopoiesisFluid extends BlockFluidClassic
        
         }
         return(bIsFlowingVert);
+    }
+    
+    private void setEcoFlowingFluidBlock(World world, int x, int y, int z)
+    {
+    	Block blockToSet;
+    	if( y > 0  && y < 5 )
+    	{
+    		world.setBlock(x, y, z, Blocks.bedrock);
+    	}
+    	
+    	if( y > 5 )
+    	{
+    		world.setBlock(x, y, z, Blocks.stone);
+    	}
+		world.markBlockForUpdate(x, y, z);
+    	
     }
     
    /* 
