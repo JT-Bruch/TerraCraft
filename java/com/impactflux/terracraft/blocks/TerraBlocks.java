@@ -27,7 +27,10 @@ public class TerraBlocks
 	public static Fluid fluidEcopoiesis;
 	public static BlockEcopoiesisFluid fluidEcopoiesisBlock;
 	
-	
+	//
+	//
+	//
+	public static Block terraBiomeChanger;
 	public static void loadBlocks()
 	{	
 		oreEcopoiesis = new BlockEcopoiesisOre();
@@ -39,6 +42,9 @@ public class TerraBlocks
 		fluidEcopoiesisBlock = new BlockEcopoiesisFluid(fluidEcopoiesis, Material.water);
 		GameRegistry.registerBlock(fluidEcopoiesisBlock, "fluidEcopoiesis");
 		
+		terraBiomeChanger = new BlockBiomeChanger();
+		
+		RegisterHelper.registerBlock(terraBiomeChanger);
 		RegisterHelper.registerBlock(oreEcopoiesis);
     	RegisterHelper.registerBlock(blockEcopoiesis);
     	
