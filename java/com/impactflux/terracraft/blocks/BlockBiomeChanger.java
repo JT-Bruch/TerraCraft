@@ -14,6 +14,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import com.impactflux.terracraft.TerraCraft;
 import com.impactflux.terracraft.library.TerraCraftReference;
 import com.impactflux.terracraft.library.TerraUtilities;
 
@@ -44,6 +45,9 @@ public class BlockBiomeChanger extends BlockContainer
 		// Drop through if the player is sneaking
 		if (entityplayer.isSneaking()) {
 			return false;
+		}
+		if (!world.isRemote) {
+			entityplayer.openGui(TerraCraft.instance, 1, world, i, j, k);
 		}
 
 		
