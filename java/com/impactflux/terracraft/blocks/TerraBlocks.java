@@ -1,5 +1,6 @@
 package com.impactflux.terracraft.blocks;
 
+import com.impactflux.terracraft.TerraCraft;
 import com.impactflux.terracraft.fluid.BlockEcopoiesisFluid;
 import com.impactflux.terracraft.library.RegisterHelper;
 
@@ -31,6 +32,7 @@ public class TerraBlocks
 	//
 	//
 	public static Block terraBiomeChanger;
+	
 	public static void loadBlocks()
 	{	
 		oreEcopoiesis = new BlockEcopoiesisOre();
@@ -43,6 +45,7 @@ public class TerraBlocks
 		GameRegistry.registerBlock(fluidEcopoiesisBlock, "fluidEcopoiesis");
 		
 		terraBiomeChanger = new BlockBiomeChanger();
+		GameRegistry.registerTileEntity(TileBiomeChanger.class, "BiomeChanger");
 		
 		RegisterHelper.registerBlock(terraBiomeChanger);
 		RegisterHelper.registerBlock(oreEcopoiesis);

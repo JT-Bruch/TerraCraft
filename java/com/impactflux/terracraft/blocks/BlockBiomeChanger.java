@@ -46,8 +46,14 @@ public class BlockBiomeChanger extends BlockContainer
 		if (entityplayer.isSneaking()) {
 			return false;
 		}
-		if (!world.isRemote) {
-			entityplayer.openGui(TerraCraft.instance, 1, world, i, j, k);
+		//if (!world.isRemote) {
+		//	entityplayer.openGui(TerraCraft.instance, 1, world, i, j, k);
+		//}
+		
+		for(int BlockNdx = 0; BlockNdx < 64; BlockNdx++)
+		{
+		  Block tmp = world.getBlock(i + BlockNdx, j, k);
+		  
 		}
 
 		
