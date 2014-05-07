@@ -40,7 +40,7 @@ public class BlockBiomeChanger extends BlockContainer
 	}
 	
 	@Override
-	public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer entityplayer, int par6, float par7, float par8, float par9) {
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityplayer, int par6, float par7, float par8, float par9) {
 
 		// Drop through if the player is sneaking
 		if (entityplayer.isSneaking()) {
@@ -52,7 +52,13 @@ public class BlockBiomeChanger extends BlockContainer
 		
 		for(int BlockNdx = 0; BlockNdx < 64; BlockNdx++)
 		{
-		  Block tmp = world.getBlock(i + BlockNdx, j, k);
+		  Block CurrentBlock = world.getBlock(x + BlockNdx, y, z);
+		 // Block CurrentBlock
+		  //if( !CurrentBlock.isAir(world, x, y, z) )
+		  //{
+		//	CurrentBlock.breakBlock(world, x, y, z, p_149749_5_, p_149749_6_);
+		 // }
+		  
 		  
 		}
 
