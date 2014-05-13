@@ -7,14 +7,18 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import com.impactflux.terracraft.TerraCraft;
+import com.impactflux.terracraft.library.TerraBiomeChangeLogic;
+import com.impactflux.terracraft.library.TerraBlockCoord;
 import com.impactflux.terracraft.library.TerraCraftReference;
 import com.impactflux.terracraft.library.TerraUtilities;
 
@@ -46,22 +50,12 @@ public class BlockBiomeChanger extends BlockContainer
 		if (entityplayer.isSneaking()) {
 			return false;
 		}
-		//if (!world.isRemote) {
-		//	entityplayer.openGui(TerraCraft.instance, 1, world, i, j, k);
-		//}
-		
-		for(int BlockNdx = 0; BlockNdx < 64; BlockNdx++)
-		{
-		  Block CurrentBlock = world.getBlock(x + BlockNdx, y, z);
-		 // Block CurrentBlock
-		  //if( !CurrentBlock.isAir(world, x, y, z) )
-		  //{
-		//	CurrentBlock.breakBlock(world, x, y, z, p_149749_5_, p_149749_6_);
-		 // }
-		  
-		  
+		if (!world.isRemote) {
+			entityplayer.openGui(TerraCraft.instance, 1, world, x, y, z);
 		}
-
+		
+		TerraBlockCoord originBlock = new TerraBlockCoord(x, y, z, Blocks.diamond_block);
+		TerraBiomeChangeLogic.ReplaceBiome(world, originBlock);
 		
 		return true;
 
@@ -98,6 +92,11 @@ public class BlockBiomeChanger extends BlockContainer
 		return 1;
 	}
 	
+	@Override
+	public boolean hasTileEntity(int meta)
+	{
+		return true;
+	}
 	
 	
 

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.impactflux.terracraft.TerraCraft;
 import com.impactflux.terracraft.library.SimpleInventory;
 import com.impactflux.terracraft.network.ISynchronizedTile;
 import com.impactflux.terracraft.network.PacketPayload;
@@ -19,13 +20,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileBiomeChanger extends TerraTile implements IInventory
+public class TileBiomeChanger extends TerraTile
 {
-	private SimpleInventory inv = new SimpleInventory(27, "BiomeChanger", 64);
 
+	private boolean m_bActivated = false;
+	
 	public TileBiomeChanger() {
-		inv.addListener(this);
-
+		
 	}
 	
 	@Override
@@ -51,41 +52,11 @@ public class TileBiomeChanger extends TerraTile implements IInventory
 	}
 	
 
-	@Override
-	public final int getSizeInventory() {
-		return inv.getSizeInventory();
-	}
-
-	@Override
-	public ItemStack getStackInSlot(int slot) {
-		return inv.getStackInSlot(slot);
-	}
-
-	@Override
-	public ItemStack decrStackSize(int slot, int amount) {
-		return inv.decrStackSize(slot, amount);
-	}
-
-	@Override
-	public void setInventorySlotContents(int slot, ItemStack stack) {
-		inv.setInventorySlotContents(slot, stack);
-	}
-
-	@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
-		return inv.getStackInSlotOnClosing(slot);
-	}
-
-	@Override
-	public String getInventoryName() {
-		return "BiomeChanger";
-	}
+	
 	
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
-
-		inv.readFromNBT(nbt);
 
 		
 	}
@@ -94,22 +65,9 @@ public class TileBiomeChanger extends TerraTile implements IInventory
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
 
-		inv.writeToNBT(nbt);
+	
 	}
-	@Override
-	public int getInventoryStackLimit() {
-		return inv.getInventoryStackLimit();
-	}
-
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
-		if (worldObj.getTileEntity(xCoord, yCoord, zCoord) != this) {
-			return false;
-		}
-
-		return entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D,
-				zCoord + 0.5D) <= 64D;
-	}
+	
 
 	@Override
 	public void invalidate() {
@@ -117,16 +75,7 @@ public class TileBiomeChanger extends TerraTile implements IInventory
 		destroy();
 	}
 
-	@Override
-	public boolean isItemValidForSlot(int slot, ItemStack stack) {
-		return true;
-	}
-
-
-	@Override
-	public boolean hasCustomInventoryName() {
-		return false;
-	}
+	
 	
 	@Override
 	public PacketPayload getPacketPayload() {
@@ -159,14 +108,7 @@ public class TileBiomeChanger extends TerraTile implements IInventory
 
 
 
-	@Override
-	public void openInventory() {
-	}
-
-	@Override
-	public void closeInventory() {
-	}
-
+	
 
 
 

@@ -56,6 +56,8 @@ public class TerraTile extends TileEntity implements ISynchronizedTile
 			initialize();
 			init = true;
 		}
+		
+		
 
 		/*if (this instanceof IPowerReceptor) {
 			IPowerReceptor receptor = (IPowerReceptor) this;
@@ -135,5 +137,7 @@ public class TerraTile extends TileEntity implements ISynchronizedTile
 	public World getWorld() {
 		return worldObj;
 	}
+	
+	
 
 }
