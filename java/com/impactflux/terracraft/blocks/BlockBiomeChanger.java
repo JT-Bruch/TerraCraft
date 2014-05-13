@@ -53,8 +53,9 @@ public class BlockBiomeChanger extends BlockContainer
 		if (!world.isRemote) {
 			entityplayer.openGui(TerraCraft.instance, 1, world, x, y, z);
 		}
+		BiomeGenBase blockBiomeInfo = world.getBiomeGenForCoords(x, y);
+		TerraBlockCoord originBlock = new TerraBlockCoord(x, y, z, blockBiomeInfo.biomeID, this);
 		
-		TerraBlockCoord originBlock = new TerraBlockCoord(x, y, z, Blocks.diamond_block);
 		TerraBiomeChangeLogic.ReplaceBiome(world, originBlock);
 		
 		return true;

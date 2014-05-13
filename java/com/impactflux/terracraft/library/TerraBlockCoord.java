@@ -4,23 +4,30 @@ import net.minecraft.block.Block;
 
 public class TerraBlockCoord
 {
-	private int XCoord = 0;
-	private int YCoord = 0;
-	private int ZCoord = 0;
+	private int xCoord = 0;
+	private int yCoord = 0;
+	private int zCoord = 0;
 	private Block blockType;
 	private boolean bValid = true;
+	private int biomeType = -1;
 	
-	public TerraBlockCoord(int X, int Y, int Z, Block block)
+	public TerraBlockCoord(int X, int Y, int Z, int BiomeType, Block block)
 	{
-		XCoord = X;
-		YCoord = Y;
-		ZCoord = Z;
+		xCoord = X;
+		yCoord = Y;
+		zCoord = Z;
 		blockType = block;
+		biomeType = BiomeType;
 		
-		if(YCoord < 0 && YCoord > 256)
+		if(yCoord < 0 && yCoord > 256)
 		{
 			bValid = false;
 		}
+	}
+	
+	public TerraBlockCoord copy()
+	{
+		return new TerraBlockCoord(xCoord, yCoord, zCoord, biomeType, blockType);
 	}
 	
 	public boolean isBlockValid()
@@ -39,59 +46,73 @@ public class TerraBlockCoord
 	}
 	public int getXCoord()
 	{
-		return(XCoord);
+		return(xCoord);
 	}
 	
 	public int getYCoord()
 	{
-		return(YCoord);
+		return(yCoord);
 	}
 	
 	public int getZCoord()
 	{
-		return(ZCoord);
+		return(zCoord);
 	}
 	
-	public void MoveXCoordByOne(boolean bAdd)
+	public int getBiomeType()
+	{
+		return(biomeType);
+	}
+	
+	
+	public void moveXCoord(int nVal, boolean bAdd)
 	{
 		if(bAdd)
 		{
-			XCoord = XCoord + 1;
+			xCoord = xCoord + nVal;
 		}
 		else
 		{
-			XCoord = XCoord - 1;
+			xCoord = xCoord - nVal;
 		}
 		
 	}
 	
-	public void MoveYCoordByOne(boolean bAdd)
+	public void moveYCoord(int nVal, boolean bAdd)
 	{
 		if(bAdd)
 		{
-			XCoord = YCoord + 1;
+			yCoord = yCoord + nVal;
 		}
 		else
 		{
-			YCoord = YCoord - 1;
+			yCoord = yCoord - nVal;
 		}
 	}
 	
-	public void MoveZCoordByOne(boolean bAdd)
+	public void moveZCoord(int nVal, boolean bAdd)
 	{
 		if(bAdd)
 		{
-			ZCoord = ZCoord + 1;
+			zCoord = zCoord + nVal;
 		}
 		else
 		{
-			ZCoord = ZCoord - 1;
+			zCoord = zCoord - nVal;
 		}
 	}
+	
+	
 	
 	public Block getBlock()
 	{
 		return(blockType);
+	}
+
+	public void setYCoord(int y)
+	{
+		yCoord = y;
+		
 	}
 
 }

@@ -7,113 +7,157 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class TerraBiomeChangeLogic
 {
-	public static void ReplaceWorldBlock(World world, TerraBlockCoord orgBlock, TerraBlockCoord repBlock)
+
+	
+	public static void ReplaceBiome(World world, TerraBlockCoord originBlock)
 	{
-	  int xCoord = repBlock.getXCoord();
-	  int yCoord = repBlock.getYCoord();
-	  int zCoord = repBlock.getZCoord();
-	  Block airBlock = world.getBlock(xCoord, yCoord, zCoord);
-	  boolean bIsAir = airBlock.isAir(world, xCoord, yCoord, zCoord);
+		for( int yNdx = originBlock.getYCoord(); yNdx >= 0; yNdx-- )
+	    {
+	  	
+			for(int magX = 0; magX < 100; magX++)
+			{	
+				ReplaceBlocksInRingFromOrigin(world, originBlock, magX, yNdx);
+			}
+		}
+		
+		
+		
+		
+	}
+	
+	public static void ReplaceBlocksInRingFromOrigin(World world, TerraBlockCoord originBlock, int magnitude, int yCoord)
+	{
+		int xOriginCoord = originBlock.getXCoord(),
+			zOriginCoord = originBlock.getZCoord();
+		
+		
+		TerraBlockCoord upperLeftCornerBlock = originBlock.copy(),
+						nextBlockToReplace;
+		
+		upperLeftCornerBlock.moveXCoord(magnitude, false);
+		upperLeftCornerBlock.moveZCoord(magnitude, true);
+		
+		//
+		// Start in upper left & move down by magnitude
+		//
+		
+		nextBlockToReplace = upperLeftCornerBlock.copy();
+		nextBlockToReplace.setYCoord(yCoord);
+		
+		for(int magX = 0; magX < magnitude * 2; magX++)
+		{	
+			nextBlockToReplace.moveXCoord(1, true);
+			ReplaceWorldBlock(world, originBlock, nextBlockToReplace);
+		}
+		
+		//
+		// Should be in bottom left & move right by magnitude
+		//
+		for(int magX = 0; magX < magnitude * 2; magX++)
+		{	
+			nextBlockToReplace.moveZCoord(1, false);
+			ReplaceWorldBlock(world, originBlock, nextBlockToReplace);
+		}
+		
+		//
+		// Should be in bottom right & move up by magnitude
+		//
+		for(int magX = 0; magX < magnitude * 2; magX++)
+		{	
+			nextBlockToReplace.moveXCoord(1, false);
+			ReplaceWorldBlock(world, originBlock, nextBlockToReplace);
+		}
+		
+		//
+		// Should be in top right & move left by magnitude
+		//
+		for(int magX = 0; magX < magnitude * 2; magX++)
+		{	
+			nextBlockToReplace.moveZCoord(1, true);
+			ReplaceWorldBlock(world, originBlock, nextBlockToReplace);
+		}
+		
+
+		
+	
+	
+	}
+	
+	
+	public static void ReplaceWorldBlock(World world, TerraBlockCoord originBlock, TerraBlockCoord replaceBlock)
+	{
+	  int xCoord = replaceBlock.getXCoord(),
+		  yCoord = replaceBlock.getYCoord(),
+	  	  zCoord = replaceBlock.getZCoord();
+	  
+	  Block blockToReplace = world.getBlock(xCoord, yCoord, zCoord);
 			 
-	  if( !bIsAir )
+	  if(IsBlockTypeReplaceable(blockToReplace) && IsBlockSameBiome(originBlock, replaceBlock))
 	  {
-		world.setBlock(xCoord, yCoord, zCoord, repBlock.getBlock());
+		world.setBlock(xCoord, yCoord, zCoord, GetBlockToChange(replaceBlock));
 	  }
-		
 	}
 	
-	public static void ReplaceBiome(World world, TerraBlockCoord orgBlock)
+	public static Block GetBlockToChange(TerraBlockCoord blockInfo)
 	{
-		BiomeGenBase BiomeBase = world.getBiomeGenForCoords(orgBlock.getXCoord(), orgBlock.getZCoord());
-		int CurrentBiomeId = BiomeBase.biomeID,
-		    ReplaceBiomeId = -1;
-		
-		TerraBlockCoord ReplaceBlock = new TerraBlockCoord(0,0,0,Blocks.stone);
-		ReplaceBlock.setBlockValid(false);
-		
-		TerraBlockCoord LastBlockReplaced = orgBlock;
-		orgBlock.MoveYCoordByOne(false);
-		int direction = 0;
-		
-		
-		
-		do
-		{
-			ReplaceBiomeId = world.getBiomeGenForCoords(ReplaceBlock.getXCoord(), ReplaceBlock.getZCoord()).biomeID;
-			if(direction < 6)
-			{
-				direction++;
-			}
-			else
-			{
-				direction = 0;
-			}
-			do
-			{
-			
-				ReplaceBlock = FindNextBlockToReplace(CurrentBiomeId, LastBlockReplaced, world, direction);
-				if(ReplaceBlock.isBlockValid())
-				{
-					ReplaceWorldBlock(world, orgBlock, ReplaceBlock);
-				}
-			} while(ReplaceBlock.isBlockValid());
-			
-			
-		}while(ReplaceBiomeId == CurrentBiomeId);
-		
-		
-		
-		
+		return(GetBlockToChangeFromYLevel(blockInfo.getYCoord()));
 	}
+
 	
-	public static TerraBlockCoord FindNextBlockToReplace(int CurrentBiomeId, TerraBlockCoord LastReplacedBlock, World world, int direction)
+	public static boolean IsBlockTypeReplaceable(Block blockType)
 	{
-		
-		
-		TerraBlockCoord ReturnBlock = new TerraBlockCoord(0,0,0,Blocks.stone);
-		ReturnBlock.setBlockValid(false);
-		
-		
-		TerraBlockCoord BlockToCheck = LastReplacedBlock;
-		switch(direction)
+		boolean bRetVal = false;
+		if( blockType == Blocks.dirt  ||
+			blockType == Blocks.stone ||
+			blockType == Blocks.sand  ||
+			blockType == Blocks.gravel||
+			blockType == Blocks.grass ||
+			blockType == Blocks.snow
+											)
 		{
-		case 0:
-			BlockToCheck.MoveXCoordByOne(true);
-			break;
-		case 1:
-			BlockToCheck.MoveYCoordByOne(true);
-			break;
-		case 2:
-			BlockToCheck.MoveZCoordByOne(true);
-			break;	
-		case 3:
-			BlockToCheck.MoveXCoordByOne(false);
-			break;
-		case 4:
-			BlockToCheck.MoveYCoordByOne(false);
-			break;
-		case 5:
-			BlockToCheck.MoveZCoordByOne(false);
-			break;	
+			bRetVal = true;
 		}
+		return(bRetVal);
 		
-		
-		BiomeGenBase BiomeBase = world.getBiomeGenForCoords(BlockToCheck.getXCoord(), BlockToCheck.getZCoord());
-		
-		if(CurrentBiomeId == BiomeBase.biomeID)
+	}
+
+	
+	public static boolean IsBlockSameBiome(TerraBlockCoord originBlock, TerraBlockCoord replaceBlock)
+	{
+		boolean bRetVal = false;
+		if( originBlock.getBiomeType() == replaceBlock.getBiomeType() )
 		{
-			ReturnBlock = BlockToCheck;
-			ReturnBlock.setBlock(GetBlockToChangeFromBiome(world, ReturnBlock));
+			bRetVal = true;
+		}
+		return(bRetVal);
+		
+	}
+	
+	public static Block GetBlockToChangeFromYLevel(int yCoord)
+	{
+		Block blockTypeToReturn = Blocks.sandstone;
+		
+		if( yCoord > 55)
+		{
+			blockTypeToReturn = Blocks.sandstone;
+		}
+		else if ( yCoord < 5 )
+		{
+			blockTypeToReturn = Blocks.bedrock;
 		}
 			
-		
-		return(ReturnBlock);
+		return(blockTypeToReturn);
 	}
 	
 	
-	
-	public static Block GetBlockToChangeFromBiome(World world, TerraBlockCoord currentBlock)
+	public static Block GetBlockToChangeFromBiome(int biomeID)
 	{
-		return(Blocks.sand);
+		Block blockTypeToReturn = Blocks.sandstone;
+		
+		if( biomeID > 0)
+		{
+			blockTypeToReturn = Blocks.sandstone;
+		}
+		return(blockTypeToReturn);
 	}
 }
