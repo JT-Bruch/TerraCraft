@@ -1,5 +1,15 @@
 package com.impactflux.terracraft.items;
+import cofh.util.ItemHelper;
+
+
+
+
+
+import com.impactflux.terracraft.TerraCraft;
 import com.impactflux.terracraft.blocks.TerraBlocks;
+import com.impactflux.terracraft.fluid.BucketHandler;
+import com.impactflux.terracraft.fluid.TerraFluids;
+import com.impactflux.terracraft.items.ItemBucket;
 import com.impactflux.terracraft.library.RegisterHelper;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -8,58 +18,90 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class TerraItems
 {
-	//
-	// Ingots
-	//
-	public static Item ingotEcopoiesis;
-	public static Item nuggetEcopoiesis;
-	//
-	// Tools 
-	//
-	public static Item axeEcopoiesis;
-	public static Item pickaxeEcopoiesis;
-	public static Item swordEcopoiesis;
-	public static Item shovelEcopoiesis;
-	public static Item hoeEcopoiesis;
-	public static Item bucketEcopoiesis;
-	//
-	// Tool Material
-	//
-	
-	
-	static ToolMaterial materialToolEcopoiesis = EnumHelper.addToolMaterial("materialToolEcopoiesis", 2, 750, 7, 2.0F, 20);
-	
-	public static void loadItems()
-	{
-    	ingotEcopoiesis = new ItemEcopoiesisIngot();
-    	nuggetEcopoiesis = new ItemEcopoiesisNugget();
-		
-    	axeEcopoiesis = new ItemEcopoiesisAxe();
-    	pickaxeEcopoiesis = new ItemEcopoiesisPickaxe();
-    	swordEcopoiesis = new ItemEcopoiesisSword(); 
-    	shovelEcopoiesis = new ItemEcopoiesisShovel();
-    	hoeEcopoiesis = new ItemEcopoiesisHoe();
-    	bucketEcopoiesis = new ItemEcopoiesisBucket(TerraBlocks.fluidEcopoiesisBlock);
-    	
-    	
-    	
-    	RegisterHelper.registerItem(ingotEcopoiesis);
-    	RegisterHelper.registerItem(nuggetEcopoiesis);
-    	
-    	RegisterHelper.registerItem(axeEcopoiesis);
-    	RegisterHelper.registerItem(pickaxeEcopoiesis);
-    	RegisterHelper.registerItem(swordEcopoiesis);
-    	RegisterHelper.registerItem(shovelEcopoiesis);
-    	RegisterHelper.registerItem(hoeEcopoiesis);
-    	
-    	GameRegistry.registerItem(bucketEcopoiesis, "bucketEcopoiesis");
-    	//FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("fluidName", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketEcopoiesis), new ItemStack(Items.bucket));
+	public static void preInit() {
+
+		itemBucket = (ItemBucket) new ItemBucket("terracraft").setUnlocalizedName("bucket").setCreativeTab(TerraCraft.tab);
+		itemMaterial = (ItemBase) new ItemBase("terracraft").setUnlocalizedName("material").setCreativeTab(TerraCraft.tab);
 	}
 
+	public static void initialize() {
+
+		bucketEcopoiesis = itemBucket.addItem(0, "bucketEcopoiesis", 1);
+		bucketGenesis = itemBucket.addItem(1, "bucketGenesis", 1);
+		
+
+		dustEcopoiesis = itemMaterial.addItem(37, "dustEcopoiesis", 1);
+		dustGenesis = itemMaterial.addItem(38, "dustGenesis", 2);
+
+		ingotEcopoiesis = itemMaterial.addItem(69, "ingotEcopoiesis", 1);
+		ingotGenesis = itemMaterial.addItem(70, "ingotGenesis", 2);
+
+		nuggetEcopoiesis = itemMaterial.addItem(101, "nuggetEcopoiesis");
+		nuggetGenesis = itemMaterial.addItem(102, "nuggetGenesis");
+
+		gearEcopoiesis = itemMaterial.addItem(133, "gearEcopoiesis");
+		gearGenesis = itemMaterial.addItem(134, "gearGenesis");
+
+		
+		ItemHelper.addGearRecipe(gearEcopoiesis, "ingotEcopoiesis");
+		ItemHelper.addGearRecipe(gearGenesis, "ingotGenesis");
+		
+		OreDictionary.registerOre("dustEcopoiesis", dustEcopoiesis);
+		OreDictionary.registerOre("dustGenesis", dustGenesis);
+
+		OreDictionary.registerOre("ingotEcopoiesis", ingotEcopoiesis);
+		OreDictionary.registerOre("ingotGenesis", ingotGenesis);
+
+		OreDictionary.registerOre("nuggetEcopoiesis", nuggetEcopoiesis);
+		OreDictionary.registerOre("nuggetGenesis", nuggetGenesis);
+
+		OreDictionary.registerOre("gearEcopoiesis", gearEcopoiesis);
+		OreDictionary.registerOre("gearGenesis", gearGenesis);
+		
+		FurnaceRecipes.smelting().func_151394_a(dustEcopoiesis, ingotEcopoiesis, 0.0F);
+		FurnaceRecipes.smelting().func_151394_a(dustGenesis, ingotGenesis, 0.0F);
+		// No Enderium
+	}
+
+	public static void postInit() {
+
+		BucketHandler.registerBucket(TerraBlocks.blockFluidEcopoiesis, 0, bucketEcopoiesis);
+		BucketHandler.registerBucket(TerraBlocks.blockFluidGenesis, 0, bucketGenesis);
+
+
+		FluidContainerRegistry.registerFluidContainer(TerraFluids.fluidEcopoiesis, bucketEcopoiesis, FluidContainerRegistry.EMPTY_BUCKET);
+		FluidContainerRegistry.registerFluidContainer(TerraFluids.fluidGenesis, bucketGenesis, FluidContainerRegistry.EMPTY_BUCKET);
+
+	}
+
+	public static ItemBucket itemBucket;
+	public static ItemBase itemMaterial;
+
+	public static ItemStack bucketEcopoiesis;
+	public static ItemStack bucketGenesis;
+
+	public static ItemStack ingotEcopoiesis;
+	public static ItemStack ingotGenesis;
+
+	public static ItemStack dustEcopoiesis;
+	public static ItemStack dustGenesis;
+
+	public static ItemStack nuggetEcopoiesis;
+	public static ItemStack nuggetGenesis;
+
+	public static ItemStack gearEcopoiesis;
+	public static ItemStack gearGenesis;
+
+
+
+
+	
 }

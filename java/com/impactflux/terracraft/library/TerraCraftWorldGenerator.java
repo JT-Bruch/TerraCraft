@@ -32,14 +32,7 @@ public class TerraCraftWorldGenerator implements IWorldGenerator
 
 	private void generateSurface(World world, Random random, int chunkX, int chunkZ)
 	{
-		for(int k = 0; k < 10; k++)
-		{
-        	int ecoOreXCoord = chunkX + random.nextInt(16);
-        	int ecoOreYCoord = random.nextInt(64);
-        	int ecoOreZCoord = chunkZ + random.nextInt(16);
-        	
-        	(new WorldGenMinable(TerraBlocks.oreEcopoiesis, 13)).generate(world, random, ecoOreXCoord, ecoOreYCoord, ecoOreZCoord);
-        }
+		
 	}
 		
 

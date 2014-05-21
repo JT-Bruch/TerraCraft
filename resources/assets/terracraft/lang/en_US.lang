@@ -1,0 +1,17 @@
+tile.terracraft.ore.ecopoiesis.name=Ecopoiesis Ore
+tile.terracraft.ore.genesis.name=Genesis Ore
+tile.terracraft.storage.ecopoiesis.name=Ecopoiesis Block
+tile.terracraft.storage.genesis.name=Genesis Block
+item.terracraft.bucket.bucketGenesis.name=Genesis Bucket
+item.terracraft.bucket.bucketEcopoiesis.name=Ecopoiesis Bucket
+item.terracraft.material.dustGenesis.name=Genesis Dust
+item.terracraft.material.dustEcopoiesis.name=Ecopoiesis Dust
+item.terracraft.material.ingotGenesis.name=Genesis Ingot
+item.terracraft.material.ingotEcopoiesis.name=Ecopoiesis Ingot
+item.terracraft.material.nuggetGenesis.name=Genesis Nugget
+item.terracraft.material.nuggetEcopoiesis.name=Ecopoiesis Nugget
+item.terracraft.material.gearGenesis.name=Genesis Gear
+item.terracraft.material.gearEcopoiesis.name=Ecopoiesis Gear
+itemGroup.terracraft.creativeTab=TerraCraft Items
+
+

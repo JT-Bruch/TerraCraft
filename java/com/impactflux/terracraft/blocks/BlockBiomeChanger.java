@@ -67,7 +67,7 @@ public class BlockBiomeChanger extends BlockContainer
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int metadata) {
-		return new TileBiomeChanger();
+		return new TileEntity();
 	}
 
 	@Override

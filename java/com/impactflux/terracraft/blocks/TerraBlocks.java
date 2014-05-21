@@ -2,6 +2,9 @@ package com.impactflux.terracraft.blocks;
 
 import com.impactflux.terracraft.TerraCraft;
 import com.impactflux.terracraft.fluid.BlockEcopoiesisFluid;
+import com.impactflux.terracraft.fluid.BlockFluidEcopoiesis;
+import com.impactflux.terracraft.fluid.BlockFluidGenesis;
+import com.impactflux.terracraft.fluid.BlockFluidTerraBase;
 import com.impactflux.terracraft.library.RegisterHelper;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -12,45 +15,38 @@ import net.minecraftforge.fluids.FluidRegistry;
 
 public class TerraBlocks
 {
-	//
-	// Ores
-	//
-	public static Block oreEcopoiesis;
+	public static TerraBlockOre blockOre;
+	public static TerraBlockStorage blockStorage;
+
+	public static BlockFluidTerraBase blockFluidEcopoiesis;
+	public static BlockFluidTerraBase blockFluidGenesis;
 	
-	//
-	// Metal Blocks
-	// 
-	public static Block blockEcopoiesis;
-	
-	//
-	// Fluid Blocks
-	//
-	public static Fluid fluidEcopoiesis;
-	public static BlockEcopoiesisFluid fluidEcopoiesisBlock;
-	
-	//
-	//
-	//
-	public static Block terraBiomeChanger;
-	
-	public static void loadBlocks()
-	{	
-		oreEcopoiesis = new BlockEcopoiesisOre();
-		blockEcopoiesis = new BlockEcopoiesis();
+	public static void preInit() {
+
+		blockOre = new TerraBlockOre();
+		blockStorage = new TerraBlockStorage();
+
+		blockFluidEcopoiesis = new BlockFluidEcopoiesis();
+		blockFluidGenesis = new BlockFluidGenesis();
 		
-		fluidEcopoiesis = new Fluid("fluidEcopoiesis");
-		FluidRegistry.registerFluid(fluidEcopoiesis);
-		
-		fluidEcopoiesisBlock = new BlockEcopoiesisFluid(fluidEcopoiesis, Material.water);
-		GameRegistry.registerBlock(fluidEcopoiesisBlock, "fluidEcopoiesis");
-		
-		terraBiomeChanger = new BlockBiomeChanger();
-		GameRegistry.registerTileEntity(TileBiomeChanger.class, "BiomeChanger");
-		
-		RegisterHelper.registerBlock(terraBiomeChanger);
-		RegisterHelper.registerBlock(oreEcopoiesis);
-    	RegisterHelper.registerBlock(blockEcopoiesis);
-    	
+		blockOre.preInit();
+		blockStorage.preInit();
+
+		blockFluidEcopoiesis.preInit();
+		blockFluidGenesis.preInit();
+
 	}
+
+	public static void initialize() {
+
+	}
+
+	public static void postInit() {
+
+		blockOre.postInit();
+	}
+
+
+	
 
 }
