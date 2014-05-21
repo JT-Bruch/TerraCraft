@@ -13,5 +13,19 @@ item.terracraft.material.nuggetEcopoiesis.name=Ecopoiesis Nugget
 item.terracraft.material.gearGenesis.name=Genesis Gear
 item.terracraft.material.gearEcopoiesis.name=Ecopoiesis Gear
 itemGroup.terracraft.creativeTab=TerraCraft Items
+item.terracraft.tool.hoeGenesis.name=Genesis Hoe
+item.terracraft.tool.shovelGenesis.name=Genesis Shovel
+item.terracraft.tool.swordGenesis.name=Genesis Sword
+item.terracraft.tool.axeGenesis.name=Genesis Axe
+item.terracraft.tool.pickaxeGenesis.name=Genesis Pickaxe
+item.terracraft.tool.sickleGenesis.name=Genesis Sickle
+item.terracraft.tool.hoeEcopoiesis.name=Ecopoiesis Hoe
+item.terracraft.tool.shovelEcopoiesis.name=Ecopoiesis Shovel
+item.terracraft.tool.swordEcopoiesis.name=Ecopoiesis Sword
+item.terracraft.tool.axeEcopoiesis.name=Ecopoiesis Axe
+item.terracraft.tool.pickaxeEcopoiesis.name=Ecopoiesis Pickaxe
+item.terracraft.tool.sickleEcopoiesis.name=Ecopoiesis Sickle
+
+
 
 

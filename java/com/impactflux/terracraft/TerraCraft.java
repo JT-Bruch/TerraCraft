@@ -57,7 +57,10 @@ public class TerraCraft
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) 
 	{
-		config.setConfiguration(new Configuration(new File("/TerraCraft/TerraCraft.cfg")));
+		TerraCraftReference.configDir = event.getModConfigurationDirectory();
+
+		
+		config.setConfiguration(new Configuration(new File(TerraCraftReference.configDir, "/TerraCraft/TerraCraft.cfg")));
 
 
 		TerraFluids.preInit();

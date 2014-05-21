@@ -1,25 +1,36 @@
 package com.impactflux.terracraft.gui;
 
-import com.impactflux.terracraft.blocks.TerraBlockOre;
+import com.impactflux.terracraft.items.TerraItems;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+
 
 public class TerraCraftCreativeTab extends CreativeTabs 
 {
-	public TerraCraftCreativeTab() {
+	static ItemStack iconStack;
+	
+	public TerraCraftCreativeTab() 
+	{
 
 		super("terracraft");
+	}
+	
+	public static void initialize()
+	{
+		iconStack = new ItemStack(TerraItems.itemSwordEcopoiesis, Short.MAX_VALUE);
+
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ItemStack getIconItemStack() {
 
-		return TerraBlockOre.oreEcopoiesis;
+		return iconStack;
 	}
 
 	@Override

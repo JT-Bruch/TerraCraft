@@ -28,10 +28,70 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class TerraItems
 {
-	public static void preInit() {
+	public static final String TOOL = "terracraft.tool.";
+	public static final String TOOL_CONFIG_GENESIS = "Tool.Genesis.";
+	public static final String TOOL_CONFIG_ECOPOIESIS = "Tool.Ecopoiesis.";
+	public static final String TOOL_TEX_GENESIS = "terracraft:tool/Genesis";
+	public static final String TOOL_TEX_ECOPOIESIS = "terracraft:tool/Ecopoiesis";
+	
+	
+	public static void preInit() 
+	{
 
 		itemBucket = (TerraItemBucket) new TerraItemBucket("terracraft").setUnlocalizedName("bucket").setCreativeTab(TerraCraft.tab);
 		itemMaterial = (TerraItemBase) new TerraItemBase("terracraft").setUnlocalizedName("material").setCreativeTab(TerraCraft.tab);
+		
+		
+		//
+		// Genesis tools
+		//
+		itemSwordGenesis = new ItemSwordGenesis(TOOL_MATERIAL_GENESIS).setUnlocalizedName(TOOL + "swordGenesis").setTextureName(TOOL_TEX_GENESIS + "Sword")
+				.setCreativeTab(TerraCraft.tab);
+		itemShovelGenesis = new ItemShovelGenesis(TOOL_MATERIAL_GENESIS).setUnlocalizedName(TOOL + "shovelGenesis").setTextureName(TOOL_TEX_GENESIS + "Shovel")
+				.setCreativeTab(TerraCraft.tab);
+		itemPickaxeGenesis = new ItemPickaxeGenesis(TOOL_MATERIAL_GENESIS).setUnlocalizedName(TOOL + "pickaxeGenesis").setTextureName(TOOL_TEX_GENESIS + "Pickaxe")
+				.setCreativeTab(TerraCraft.tab);
+		itemAxeGenesis = new ItemAxeGenesis(TOOL_MATERIAL_GENESIS).setUnlocalizedName(TOOL + "axeGenesis").setTextureName(TOOL_TEX_GENESIS + "Axe")
+				.setCreativeTab(TerraCraft.tab);
+		itemSickleGenesis = new ItemSickleGenesis(TOOL_MATERIAL_GENESIS).setUnlocalizedName(TOOL + "sickleGenesis").setTextureName(TOOL_TEX_GENESIS + "Sickle")
+				.setCreativeTab(TerraCraft.tab);
+		itemHoeGenesis = new ItemHoeGenesis(TOOL_MATERIAL_GENESIS).setUnlocalizedName(TOOL + "hoeGenesis").setTextureName(TOOL_TEX_GENESIS + "Hoe")
+				.setCreativeTab(TerraCraft.tab);
+		
+		
+		GameRegistry.registerItem(itemSwordGenesis, "tool.swordGenesis");
+		GameRegistry.registerItem(itemShovelGenesis, "tool.shovelGenesis");
+		GameRegistry.registerItem(itemPickaxeGenesis, "tool.pickaxeGenesis");
+		GameRegistry.registerItem(itemAxeGenesis, "tool.axeGenesis");
+		GameRegistry.registerItem(itemSickleGenesis, "tool.sickleGenesis");
+		GameRegistry.registerItem(itemHoeGenesis, "tool.hoeGenesis");
+		
+		//
+		// Ecopoiesis tools
+		//
+		itemSwordEcopoiesis = new ItemSwordEcopoiesis(TOOL_MATERIAL_ECOPOIESIS).setUnlocalizedName(TOOL + "swordEcopoiesis").setTextureName(TOOL_TEX_ECOPOIESIS + "Sword")
+				.setCreativeTab(TerraCraft.tab);
+		itemShovelEcopoiesis = new ItemShovelEcopoiesis(TOOL_MATERIAL_ECOPOIESIS).setUnlocalizedName(TOOL + "shovelEcopoiesis").setTextureName(TOOL_TEX_ECOPOIESIS + "Shovel")
+				.setCreativeTab(TerraCraft.tab);
+		itemPickaxeEcopoiesis = new ItemPickaxeEcopoiesis(TOOL_MATERIAL_ECOPOIESIS).setUnlocalizedName(TOOL + "pickaxeEcopoiesis").setTextureName(TOOL_TEX_ECOPOIESIS + "Pickaxe")
+				.setCreativeTab(TerraCraft.tab);
+		itemAxeEcopoiesis = new ItemAxeEcopoiesis(TOOL_MATERIAL_ECOPOIESIS).setUnlocalizedName(TOOL + "axeEcopoiesis").setTextureName(TOOL_TEX_ECOPOIESIS + "Axe")
+				.setCreativeTab(TerraCraft.tab);
+		itemSickleEcopoiesis = new ItemSickleEcopoiesis(TOOL_MATERIAL_ECOPOIESIS).setUnlocalizedName(TOOL + "sickleEcopoiesis").setTextureName(TOOL_TEX_ECOPOIESIS + "Sickle")
+				.setCreativeTab(TerraCraft.tab);
+		itemHoeEcopoiesis = new ItemHoeEcopoiesis(TOOL_MATERIAL_ECOPOIESIS).setUnlocalizedName(TOOL + "hoeEcopoiesis").setTextureName(TOOL_TEX_ECOPOIESIS + "Hoe")
+				.setCreativeTab(TerraCraft.tab);
+		
+		
+		GameRegistry.registerItem(itemSwordEcopoiesis, "tool.swordEcopoiesis");
+		GameRegistry.registerItem(itemShovelEcopoiesis, "tool.shovelEcopoiesis");
+		GameRegistry.registerItem(itemPickaxeEcopoiesis, "tool.pickaxeEcopoiesis");
+		GameRegistry.registerItem(itemAxeEcopoiesis, "tool.axeEcopoiesis");
+		GameRegistry.registerItem(itemSickleEcopoiesis, "tool.sickleEcopoiesis");
+		GameRegistry.registerItem(itemHoeEcopoiesis, "tool.hoeEcopoiesis");
+		
+		
+		
 	}
 
 	public static void initialize() {
@@ -70,7 +130,21 @@ public class TerraItems
 		
 		FurnaceRecipes.smelting().func_151394_a(dustEcopoiesis, ingotEcopoiesis, 0.0F);
 		FurnaceRecipes.smelting().func_151394_a(dustGenesis, ingotGenesis, 0.0F);
-		// No Enderium
+		
+		GameRegistry.registerItem(itemSwordGenesis, "tool.swordGenesis");
+		GameRegistry.registerItem(itemShovelGenesis, "tool.shovelGenesis");
+		GameRegistry.registerItem(itemPickaxeGenesis, "tool.pickaxeGenesis");
+		GameRegistry.registerItem(itemAxeGenesis, "tool.axeGenesis");
+		GameRegistry.registerItem(itemSickleGenesis, "tool.sickleGenesis");
+		GameRegistry.registerItem(itemHoeGenesis, "tool.hoeGenesis");
+		
+		GameRegistry.registerItem(itemSwordEcopoiesis, "tool.swordEcopoiesis");
+		GameRegistry.registerItem(itemShovelEcopoiesis, "tool.shovelEcopoiesis");
+		GameRegistry.registerItem(itemPickaxeEcopoiesis, "tool.pickaxeEcopoiesis");
+		GameRegistry.registerItem(itemAxeEcopoiesis, "tool.axeEcopoiesis");
+		GameRegistry.registerItem(itemSickleEcopoiesis, "tool.sickleEcopoiesis");
+		GameRegistry.registerItem(itemHoeEcopoiesis, "tool.hoeEcopoiesis");
+
 	}
 
 	public static void postInit() {
@@ -83,6 +157,32 @@ public class TerraItems
 		FluidContainerRegistry.registerFluidContainer(TerraFluids.fluidGenesis, bucketGenesis, FluidContainerRegistry.EMPTY_BUCKET);
 
 	}
+	
+	public static boolean[] genesisEnable = new boolean[8];
+	public static boolean[] ecopoiesisEnable = new boolean[8];
+	
+	static {
+		String category = "item.feature";
+		genesisEnable[0] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Axe", true);
+		genesisEnable[2] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Sword", true);
+		genesisEnable[3] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Shovel", true);
+		genesisEnable[4] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Pickaxe", true);
+		genesisEnable[5] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Hoe", true);
+		genesisEnable[6] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Sickle", true);
+
+	}
+	
+	static {
+		String category = "item.feature";
+		ecopoiesisEnable[0] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Axe", true);
+		ecopoiesisEnable[2] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Sword", true);
+		ecopoiesisEnable[3] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Shovel", true);
+		ecopoiesisEnable[4] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Pickaxe", true);
+		ecopoiesisEnable[5] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Hoe", true);
+		ecopoiesisEnable[6] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Sickle", true);
+
+	}
+
 
 	public static TerraItemBucket itemBucket;
 	public static TerraItemBase itemMaterial;
@@ -101,6 +201,24 @@ public class TerraItems
 
 	public static ItemStack gearEcopoiesis;
 	public static ItemStack gearGenesis;
+	
+	
+	public static Item itemSwordGenesis;
+	public static Item itemShovelGenesis;
+	public static Item itemPickaxeGenesis;
+	public static Item itemAxeGenesis;
+	public static Item itemSickleGenesis;
+	public static Item itemHoeGenesis;
+	
+	public static Item itemSwordEcopoiesis;
+	public static Item itemShovelEcopoiesis;
+	public static Item itemPickaxeEcopoiesis;
+	public static Item itemAxeEcopoiesis;
+	public static Item itemSickleEcopoiesis;
+	public static Item itemHoeEcopoiesis;
+	
+	public static final Item.ToolMaterial TOOL_MATERIAL_GENESIS = EnumHelper.addToolMaterial("TC_GENESIS", 3, 100, 8.0F, 0, 25);
+	public static final Item.ToolMaterial TOOL_MATERIAL_ECOPOIESIS = EnumHelper.addToolMaterial("TC_ECOPOIESIS", 3, 100, 8.0F, 0, 25);
 
 
 
