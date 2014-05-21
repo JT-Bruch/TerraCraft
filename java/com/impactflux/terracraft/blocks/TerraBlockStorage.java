@@ -129,7 +129,7 @@ public class TerraBlockStorage extends Block implements IInitializer
 	@Override
 	public boolean postInit() {
 
-		ItemHelper.addStorageRecipe(blockEcopoiesis, "ingotCopper");
+		ItemHelper.addStorageRecipe(blockEcopoiesis, "ingotEcopoiesis");
 		ItemHelper.addStorageRecipe(blockGenesis, "ingotGenesis");
 
 

@@ -1,4 +1,4 @@
-package com.impactflux.terracraft.items;
+package com.impactflux.terracraft.library.items;
 
 
 import com.impactflux.terracraft.fluid.BucketHandler;
@@ -11,25 +11,25 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
 
-public class ItemBucket extends ItemBase
+public class TerraItemBucket extends TerraItemBase
 {
 	Item container = Items.bucket;
 
-	public ItemBucket() {
+	public TerraItemBucket() {
 
 		super();
 		setMaxStackSize(1);
 		setContainerItem(container);
 	}
 
-	public ItemBucket(String modName) {
+	public TerraItemBucket(String modName) {
 
 		super(modName);
 		setMaxStackSize(1);
 		setContainerItem(container);
 	}
 
-	public ItemBucket(Item container) {
+	public TerraItemBucket(Item container) {
 
 		super();
 		setMaxStackSize(1);

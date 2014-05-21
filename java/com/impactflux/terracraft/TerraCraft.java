@@ -26,7 +26,7 @@ import com.impactflux.terracraft.library.ConfigHandler;
 import com.impactflux.terracraft.library.RegisterHelper;
 import com.impactflux.terracraft.library.TerraCraftReference;
 import com.impactflux.terracraft.library.TerraCraftWorldGenerator;
-import com.impactflux.terracraft.network.TerraCraftPacket;
+
 import com.impactflux.terracraft.recipes.TerraRecipes;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;

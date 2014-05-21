@@ -5,12 +5,14 @@ import cofh.util.ItemHelper;
 
 
 
+
 import com.impactflux.terracraft.TerraCraft;
 import com.impactflux.terracraft.blocks.TerraBlocks;
 import com.impactflux.terracraft.fluid.BucketHandler;
 import com.impactflux.terracraft.fluid.TerraFluids;
-import com.impactflux.terracraft.items.ItemBucket;
 import com.impactflux.terracraft.library.RegisterHelper;
+import com.impactflux.terracraft.library.items.TerraItemBase;
+import com.impactflux.terracraft.library.items.TerraItemBucket;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
@@ -28,8 +30,8 @@ public class TerraItems
 {
 	public static void preInit() {
 
-		itemBucket = (ItemBucket) new ItemBucket("terracraft").setUnlocalizedName("bucket").setCreativeTab(TerraCraft.tab);
-		itemMaterial = (ItemBase) new ItemBase("terracraft").setUnlocalizedName("material").setCreativeTab(TerraCraft.tab);
+		itemBucket = (TerraItemBucket) new TerraItemBucket("terracraft").setUnlocalizedName("bucket").setCreativeTab(TerraCraft.tab);
+		itemMaterial = (TerraItemBase) new TerraItemBase("terracraft").setUnlocalizedName("material").setCreativeTab(TerraCraft.tab);
 	}
 
 	public static void initialize() {
@@ -82,8 +84,8 @@ public class TerraItems
 
 	}
 
-	public static ItemBucket itemBucket;
-	public static ItemBase itemMaterial;
+	public static TerraItemBucket itemBucket;
+	public static TerraItemBase itemMaterial;
 
 	public static ItemStack bucketEcopoiesis;
 	public static ItemStack bucketGenesis;

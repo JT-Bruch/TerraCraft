@@ -1,4 +1,4 @@
-package com.impactflux.terracraft.items;
+package com.impactflux.terracraft.library.items;
 
 import cofh.render.IconRegistry;
 import cofh.util.ItemHelper;
@@ -17,51 +17,51 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
-public class ItemBase extends Item {
+public class TerraItemBase extends Item {
 
-	public class ItemEntry {
+	public class TerraItemEntry {
 
 		public String name;
 		public int rarity = 0;
 		public int maxDamage = 0;
 
-		public ItemEntry(String name, int rarity, int maxDamage) {
+		public TerraItemEntry(String name, int rarity, int maxDamage) {
 
 			this.name = name;
 			this.rarity = rarity;
 			this.maxDamage = maxDamage;
 		}
 
-		public ItemEntry(String name, int rarity) {
+		public TerraItemEntry(String name, int rarity) {
 
 			this.name = name;
 			this.rarity = rarity;
 		}
 
-		public ItemEntry(String name) {
+		public TerraItemEntry(String name) {
 
 			this.name = name;
 		}
 	}
 
-	public TMap<Integer, ItemEntry> itemMap = new THashMap<Integer, ItemEntry>();
+	public TMap<Integer, TerraItemEntry> itemMap = new THashMap<Integer, TerraItemEntry>();
 	public ArrayList<Integer> itemList = new ArrayList<Integer>();
 
 	public boolean hasTextures = true;
 	public String modName = "terracraft";
 
-	public ItemBase() {
+	public TerraItemBase() {
 
 		setHasSubtypes(true);
 	}
 
-	public ItemBase(String modName) {
+	public TerraItemBase(String modName) {
 
 		this.modName = modName;
 		setHasSubtypes(true);
 	}
 
-	public ItemBase setHasTextures(boolean hasTextures) {
+	public TerraItemBase setHasTextures(boolean hasTextures) {
 
 		this.hasTextures = hasTextures;
 		return this;
@@ -72,7 +72,7 @@ public class ItemBase extends Item {
 		if (itemMap.containsKey(Integer.valueOf(number))) {
 			return null;
 		}
-		itemMap.put(Integer.valueOf(number), new ItemEntry(name, rarity));
+		itemMap.put(Integer.valueOf(number), new TerraItemEntry(name, rarity));
 		itemList.add(Integer.valueOf(number));
 
 		ItemStack item = new ItemStack(this, 1, number);
@@ -144,7 +144,7 @@ public class ItemBase extends Item {
 			return;
 		}
 		for (int i = 0; i < itemList.size(); i++) {
-			ItemEntry item = itemMap.get(itemList.get(i));
+			TerraItemEntry item = itemMap.get(itemList.get(i));
 			IconRegistry.addIcon(item.name,
 					modName + ":" + getUnlocalizedName().replace("item." + modName + ".", "") + "/" + StringHelper.titleCase(item.name), ir);
 		}

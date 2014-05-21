@@ -20,7 +20,7 @@ import com.impactflux.terracraft.TerraCraft;
 import com.impactflux.terracraft.library.TerraBiomeChangeLogic;
 import com.impactflux.terracraft.library.TerraBlockCoord;
 import com.impactflux.terracraft.library.TerraCraftReference;
-import com.impactflux.terracraft.library.TerraUtilities;
+
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -72,7 +72,7 @@ public class BlockBiomeChanger extends BlockContainer
 
 	@Override
 	public void breakBlock(World world, int x, int y, int z, Block block, int par6) {
-		TerraUtilities.preDestroyBlock(world, x, y, z);
+		
 		super.breakBlock(world, x, y, z, block, par6);
 	}
 
