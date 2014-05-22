@@ -1,0 +1,6 @@
+To Do:
+ 1) Remove the iterative loops through the TerraBlockOre/Storage classes.
+ 2) Split eco/genesis from those classes and into their own.
+ 3) Modify drop chance functions for Eco to chance drop ore.
+ 4) Modify drop chance function for Genesis to randomly drop any oreDict'd ore.
+ 5) Only drop chance if using Gen/Eco tool.
