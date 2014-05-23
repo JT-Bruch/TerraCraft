@@ -71,7 +71,9 @@ public class TerraCraft
 	}
 
 	@EventHandler
-	public void initialize(FMLInitializationEvent event) {
+	public void initialize(FMLInitializationEvent event) 
+	{
+		TerraCraftCreativeTab.initialize();
 
 		TerraFluids.initialize();
 		TerraItems.initialize();

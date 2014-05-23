@@ -22,7 +22,7 @@ public class TerraCraftCreativeTab extends CreativeTabs
 	
 	public static void initialize()
 	{
-		iconStack = new ItemStack(TerraItems.itemSwordEcopoiesis, Short.MAX_VALUE);
+		iconStack = new ItemStack(TerraItems.itemSwordGenesis);
 
 	}
 

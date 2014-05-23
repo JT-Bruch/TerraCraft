@@ -8,7 +8,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.impactflux.terracraft.TerraCraft;
 import com.impactflux.terracraft.items.TerraItems;
@@ -22,7 +24,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.event.ForgeEventFactory;
 
 public class TerraBlockOre extends Block implements IInitializer
 {
@@ -76,6 +80,27 @@ public class TerraBlockOre extends Block implements IInitializer
 			IconRegistry.addIcon("Ore" + i, "terracraft:ore/Ore_" + StringHelper.titleCase(NAMES[i]), ir);
 		}
 	}
+	
+	@Override
+	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int metadata, float dropchance, int fortune)
+    {
+        if( !world.isRemote )
+        {
+
+            ArrayList<ItemStack> items = getDrops(world, x, y, z, metadata, fortune);
+            dropchance = 100;
+
+            for (ItemStack item : items)
+            {
+                if (world.rand.nextFloat() <= dropchance)
+                {
+                    this.dropBlockAsItem(world, x, y, z, item);
+                }
+            }
+        }
+    }
+	
+	
 
 	/* IInitializer */
 	@Override
