@@ -9,6 +9,7 @@ import com.impactflux.terracraft.blocks.TerraBlocks;
 import com.impactflux.terracraft.blocks.TerraEcopoiesisBlockOre;
 import com.impactflux.terracraft.blocks.TerraGenesisBlockOre;
 import com.impactflux.terracraft.library.AbilityHelper;
+import com.impactflux.terracraft.library.TerraBiomeChangeLogic;
 import com.impactflux.terracraft.library.items.TerraItemPickaxeAdv;
 
 import net.minecraft.block.Block;
@@ -88,9 +89,13 @@ public class ItemPickaxeGenesis extends TerraItemPickaxeAdv
 	                {
 	                	int randBlockType = Math.abs( rand.nextInt() % blockTypes.size() );
 	                	int effectChance = Math.abs(rand.nextInt() % 100);
-	                	if(! world.isAirBlock(xPos, yPos, zPos) && effectChance < TerraItems.PickaxeGenesisEffectChance );
+	                	boolean bVal = TerraBiomeChangeLogic.IsBlockTypeReplaceable(world.getBlock(xPos, yPos, zPos));
+	                	if( bVal )
 	                	{	
-	                		world.setBlock(xPos, yPos, zPos, blockTypes.get(randBlockType));
+	                		if( effectChance <= TerraItems.PickaxeGenesisEffectChance  )
+	                		{
+	                			world.setBlock(xPos, yPos, zPos, blockTypes.get(randBlockType));
+	                		}
 	                	}
 	                }
 	            }

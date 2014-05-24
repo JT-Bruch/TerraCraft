@@ -115,7 +115,7 @@ public class TerraBiomeChangeLogic
 			blockType == Blocks.snow
 											)
 		{
-			bRetVal = true;
+			bRetVal = true;  
 		}
 		return(bRetVal);
 		

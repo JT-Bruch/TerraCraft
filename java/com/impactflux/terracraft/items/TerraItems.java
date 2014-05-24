@@ -100,7 +100,7 @@ public class TerraItems
 		
 		String category = "itemtweaks";
 		String comment = "Random chance to have the item spawn its effect";
-		PickaxeGenesisEffectChance = TerraCraft.config.get(category, "Fluid.Ecopoiesis.Effect", 10, comment);
+		PickaxeGenesisEffectChance = TerraCraft.config.get(category, "Fluid.Ecopoiesis.Effect", 3, comment);
 		
 		
 	}
