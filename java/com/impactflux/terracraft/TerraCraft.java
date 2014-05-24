@@ -49,7 +49,7 @@ public class TerraCraft
 	public static TerraCraft instance;
 	public static final CreativeTabs tab = new TerraCraftCreativeTab();
 	public static ConfigHandler config = new ConfigHandler(version);
-	
+	public static TerraCraftWorldGenerator worldGen;
 
 	
 	
@@ -61,11 +61,18 @@ public class TerraCraft
 
 		
 		config.setConfiguration(new Configuration(new File(TerraCraftReference.configDir, "/TerraCraft/TerraCraft.cfg")));
-
+		
 
 		TerraFluids.preInit();
 		TerraItems.preInit();
 		TerraBlocks.preInit();
+		
+		
+		worldGen = new TerraCraftWorldGenerator();
+		worldGen.preInit();
+    	GameRegistry.registerWorldGenerator(worldGen , 0);
+		
+
 
 		config.save();
 	}
