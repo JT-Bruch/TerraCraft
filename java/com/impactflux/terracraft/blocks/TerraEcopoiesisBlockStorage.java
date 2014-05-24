@@ -112,7 +112,7 @@ public class TerraEcopoiesisBlockStorage extends Block implements IInitializer
 	@Override
 	public boolean preInit() 
 	{
-		GameRegistry.registerBlock(this, TerraEcopoiesisItemBlockStorage.class, "Storage");
+		GameRegistry.registerBlock(this, TerraEcopoiesisItemBlockStorage.class, "StorageEcopoiesis");
 		blockEcopoiesis = new ItemStack(this, 1, 5);
 		ItemHelper.registerWithHandlers("blockEcopoiesis", blockEcopoiesis);
 		return true;

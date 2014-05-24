@@ -147,7 +147,10 @@ public class TerraItems
 
 	}
 
-	public static void postInit() {
+	public static void postInit() 
+	{
+		
+		//ItemHelper.addReverseStorageRecipe(ingotEcopoiesis, "blockEcopoiesis");
 
 		BucketHandler.registerBucket(TerraBlocks.blockFluidEcopoiesis, 0, bucketEcopoiesis);
 		BucketHandler.registerBucket(TerraBlocks.blockFluidGenesis, 0, bucketGenesis);

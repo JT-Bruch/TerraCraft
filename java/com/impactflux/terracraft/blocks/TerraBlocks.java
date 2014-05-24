@@ -24,8 +24,8 @@ public class TerraBlocks
 	public static BlockFluidTerraBase blockFluidEcopoiesis;
 	public static BlockFluidTerraBase blockFluidGenesis;
 	
-	public static void preInit() {
-
+	public static void preInit() 
+	{
 		blockGenesisOre = new TerraGenesisBlockOre();
 		blockGenesisStorage = new TerraGenesisBlockStorage();
 		
@@ -46,12 +46,13 @@ public class TerraBlocks
 
 	}
 
-	public static void initialize() {
+	public static void initialize() 
+	{
 
 	}
 
-	public static void postInit() {
-
+	public static void postInit() 
+	{
 		blockGenesisOre.postInit();
 		blockGenesisStorage.postInit();
 		

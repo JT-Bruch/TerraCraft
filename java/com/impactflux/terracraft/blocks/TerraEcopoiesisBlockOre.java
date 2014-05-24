@@ -112,7 +112,7 @@ public class TerraEcopoiesisBlockOre extends Block implements IInitializer
 	@Override
 	public boolean preInit() {
 
-		GameRegistry.registerBlock(this, TerraEcopoiesisItemBlockOre.class, "Ore");
+		GameRegistry.registerBlock(this, TerraEcopoiesisItemBlockOre.class, "OreEcopoiesis");
 		oreEcopoiesis = new ItemStack(this, 1, 5);
 		ItemHelper.registerWithHandlers("oreEcopoiesis", oreEcopoiesis);
 

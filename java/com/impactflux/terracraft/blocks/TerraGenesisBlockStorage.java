@@ -97,7 +97,7 @@ public class TerraGenesisBlockStorage extends Block implements IInitializer
 	@Override
 	public IIcon getIcon(int side, int metadata) {
 
-		return IconRegistry.getIcon("Storage", metadata);
+		return IconRegistry.getIcon("Storage" + StringHelper.titleCase(NAME));
 	}
 
 	@Override
@@ -105,7 +105,7 @@ public class TerraGenesisBlockStorage extends Block implements IInitializer
 	public void registerBlockIcons(IIconRegister ir) 
 	{
 		
-		IconRegistry.addIcon("Storage" + ORE_NDX, "terracraft:storage/Block_" + StringHelper.titleCase(NAME), ir);
+		IconRegistry.addIcon("Storage" + StringHelper.titleCase(NAME), "terracraft:storage/Block_" + StringHelper.titleCase(NAME), ir);
 		
 	}
 
@@ -113,7 +113,7 @@ public class TerraGenesisBlockStorage extends Block implements IInitializer
 	@Override
 	public boolean preInit() 
 	{
-		GameRegistry.registerBlock(this, TerraGenesisItemBlockStorage.class, "Storage");
+		GameRegistry.registerBlock(this, TerraGenesisItemBlockStorage.class, "StorageGenesis");
 		blockGenesis = new ItemStack(this, 1, 6);
 		ItemHelper.registerWithHandlers("blockGenesis", blockGenesis);
 		return true;

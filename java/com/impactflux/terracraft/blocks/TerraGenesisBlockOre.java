@@ -109,7 +109,7 @@ public class TerraGenesisBlockOre extends Block implements IInitializer
 	@Override
 	public boolean preInit() 
 	{
-		GameRegistry.registerBlock(this, TerraGenesisItemBlockOre.class, "Ore");
+		GameRegistry.registerBlock(this, TerraGenesisItemBlockOre.class, "OreGenesis");
 		oreGenesis = new ItemStack(this, 1, 6);
 		ItemHelper.registerWithHandlers("oreGenesis", oreGenesis);
 
