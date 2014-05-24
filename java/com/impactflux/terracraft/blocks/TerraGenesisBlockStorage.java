@@ -114,7 +114,7 @@ public class TerraGenesisBlockStorage extends Block implements IInitializer
 	public boolean preInit() 
 	{
 		GameRegistry.registerBlock(this, TerraGenesisItemBlockStorage.class, "StorageGenesis");
-		blockGenesis = new ItemStack(this, 1, 6);
+		blockGenesis = new ItemStack(this);
 		ItemHelper.registerWithHandlers("blockGenesis", blockGenesis);
 		return true;
 	}

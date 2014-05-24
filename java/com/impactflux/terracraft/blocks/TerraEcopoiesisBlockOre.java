@@ -32,7 +32,7 @@ public class TerraEcopoiesisBlockOre extends Block implements IInitializer
 {
 	
 	public static final String NAME = "ecopoiesis";
-	public static final int ORE_NDX = 0;
+
 	public static final int LIGHT = 4;
 	public static final int RARITY = 1;
 

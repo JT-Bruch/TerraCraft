@@ -29,7 +29,7 @@ public class TerraEcopoiesisBlockStorage extends Block implements IInitializer
 	
 	public static final String NAME = "ecopoiesis";
 	public static final int LIGHT = 15;
-	public static final int ORE_NDX = 0;
+
 	public static final float HARDNESS = 5;
 	public static final float RESISTANCE = 9;
 	public static final int RARITY = 1;
@@ -113,7 +113,7 @@ public class TerraEcopoiesisBlockStorage extends Block implements IInitializer
 	public boolean preInit() 
 	{
 		GameRegistry.registerBlock(this, TerraEcopoiesisItemBlockStorage.class, "StorageEcopoiesis");
-		blockEcopoiesis = new ItemStack(this, 1, 5);
+		blockEcopoiesis = new ItemStack(this);
 		ItemHelper.registerWithHandlers("blockEcopoiesis", blockEcopoiesis);
 		return true;
 	}

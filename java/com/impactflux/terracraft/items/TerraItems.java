@@ -6,8 +6,12 @@ import cofh.util.ItemHelper;
 
 
 
+
+
 import com.impactflux.terracraft.TerraCraft;
 import com.impactflux.terracraft.blocks.TerraBlocks;
+import com.impactflux.terracraft.blocks.TerraEcopoiesisBlockStorage;
+import com.impactflux.terracraft.blocks.TerraGenesisBlockStorage;
 import com.impactflux.terracraft.fluid.BucketHandler;
 import com.impactflux.terracraft.fluid.TerraFluids;
 import com.impactflux.terracraft.library.RegisterHelper;
@@ -150,7 +154,10 @@ public class TerraItems
 	public static void postInit() 
 	{
 		
-		//ItemHelper.addReverseStorageRecipe(ingotEcopoiesis, "blockEcopoiesis");
+		ItemHelper.addStorageRecipe(ingotEcopoiesis, "nuggetEcopoiesis");
+		ItemHelper.addStorageRecipe(ingotGenesis, "nuggetGenesis");
+		
+		
 
 		BucketHandler.registerBucket(TerraBlocks.blockFluidEcopoiesis, 0, bucketEcopoiesis);
 		BucketHandler.registerBucket(TerraBlocks.blockFluidGenesis, 0, bucketGenesis);
