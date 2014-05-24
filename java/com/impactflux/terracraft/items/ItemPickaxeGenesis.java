@@ -86,15 +86,15 @@ public class ItemPickaxeGenesis extends TerraItemPickaxeAdv
 	            {
 	                for (int zPos = z - zRange; zPos <= z + zRange; zPos++)
 	                {
-	                	int test = Math.abs( rand.nextInt() % blockTypes.size() );
-	                	world.setBlock(xPos, yPos, zPos, blockTypes.get(test));
+	                	int randBlockType = Math.abs( rand.nextInt() % blockTypes.size() );
+	                	int effectChance = Math.abs(rand.nextInt() % 100);
+	                	if(! world.isAirBlock(xPos, yPos, zPos) && effectChance < TerraItems.PickaxeGenesisEffectChance );
+	                	{	
+	                		world.setBlock(xPos, yPos, zPos, blockTypes.get(randBlockType));
+	                	}
 	                }
 	            }
 	        }
-            
-	        
-	        
-			
 		}
 		return true;
 	}

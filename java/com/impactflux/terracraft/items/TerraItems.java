@@ -8,6 +8,7 @@ import cofh.util.ItemHelper;
 
 
 
+
 import com.impactflux.terracraft.TerraCraft;
 import com.impactflux.terracraft.blocks.TerraBlocks;
 import com.impactflux.terracraft.blocks.TerraEcopoiesisBlockStorage;
@@ -37,6 +38,8 @@ public class TerraItems
 	public static final String TOOL_CONFIG_ECOPOIESIS = "Tool.Ecopoiesis.";
 	public static final String TOOL_TEX_GENESIS = "terracraft:tool/Genesis";
 	public static final String TOOL_TEX_ECOPOIESIS = "terracraft:tool/Ecopoiesis";
+	
+	public static int PickaxeGenesisEffectChance;
 	
 	
 	public static void preInit() 
@@ -94,6 +97,10 @@ public class TerraItems
 		GameRegistry.registerItem(itemSickleEcopoiesis, "tool.sickleEcopoiesis");
 		GameRegistry.registerItem(itemHoeEcopoiesis, "tool.hoeEcopoiesis");
 		
+		
+		String category = "itemtweaks";
+		String comment = "Random chance to have the item spawn its effect";
+		PickaxeGenesisEffectChance = TerraCraft.config.get(category, "Fluid.Ecopoiesis.Effect", 10, comment);
 		
 		
 	}
