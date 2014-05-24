@@ -1,15 +1,17 @@
 package com.impactflux.terracraft.library.items;
 
 import cofh.util.ItemHelper;
-
 import gnu.trove.set.hash.THashSet;
 import gnu.trove.set.hash.TLinkedHashSet;
 
 import java.util.Set;
 
+import com.impactflux.terracraft.blocks.TerraGenesisBlockOre;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
@@ -143,5 +145,7 @@ public abstract class TerraItemToolAdv extends ItemTool {
 		}
 		return super.getDigSpeed(stack, block, meta);
 	}
+	
+
 
 }

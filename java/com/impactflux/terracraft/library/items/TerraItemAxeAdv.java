@@ -9,9 +9,11 @@ import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class TerraItemAxeAdv  extends TerraItemToolAdv {
+public class TerraItemAxeAdv  extends TerraItemToolAdv 
+{
 
-	public TerraItemAxeAdv(Item.ToolMaterial toolMaterial) {
+	public TerraItemAxeAdv(Item.ToolMaterial toolMaterial) 
+	{
 
 		super(3.0F, toolMaterial);
 		addToolClass("axe");
@@ -21,5 +23,7 @@ public class TerraItemAxeAdv  extends TerraItemToolAdv {
 		effectiveMaterials.add(Material.plants);
 		effectiveMaterials.add(Material.vine);
 	}
+	
+	
 
 }

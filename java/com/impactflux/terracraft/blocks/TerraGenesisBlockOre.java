@@ -56,7 +56,7 @@ public class TerraGenesisBlockOre extends Block implements IInitializer
 	public void getSubBlocks(Item item, CreativeTabs tab, List list) 
 	{
 		
-		list.add(new ItemStack(item, 1));
+		list.add(new ItemStack(item));
 	}
 
 	@Override
@@ -83,26 +83,7 @@ public class TerraGenesisBlockOre extends Block implements IInitializer
 	{
 		IconRegistry.addIcon("Ore" + StringHelper.titleCase(NAME), "terracraft:ore/Ore_" + StringHelper.titleCase(NAME), ir);
 	}
-	
-	@Override
-	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int metadata, float dropchance, int fortune)
-    {
-        if( !world.isRemote )
-        {
 
-            ArrayList<ItemStack> items = getDrops(world, x, y, z, metadata, fortune);
-            dropchance = 100;
-
-            for (ItemStack item : items)
-            {
-                if (world.rand.nextFloat() <= dropchance)
-                {
-                    this.dropBlockAsItem(world, x, y, z, item);
-                }
-            }
-        }
-    }
-	
 	
 
 	/* IInitializer */
@@ -110,7 +91,7 @@ public class TerraGenesisBlockOre extends Block implements IInitializer
 	public boolean preInit() 
 	{
 		GameRegistry.registerBlock(this, TerraGenesisItemBlockOre.class, "OreGenesis");
-		oreGenesis = new ItemStack(this, 1, 6);
+		oreGenesis = new ItemStack(this);
 		ItemHelper.registerWithHandlers("oreGenesis", oreGenesis);
 
 		return true;
