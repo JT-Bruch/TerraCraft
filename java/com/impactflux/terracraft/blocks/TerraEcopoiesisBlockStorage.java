@@ -24,10 +24,20 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class TerraBlockStorage extends Block implements IInitializer
+public class TerraEcopoiesisBlockStorage extends Block implements IInitializer
 {
+	
+	public static final String NAME = "ecopoiesis";
+	public static final int LIGHT = 15;
+	public static final int ORE_NDX = 0;
+	public static final float HARDNESS = 5;
+	public static final float RESISTANCE = 9;
+	public static final int RARITY = 1;
 
-	public TerraBlockStorage() {
+	public static ItemStack blockEcopoiesis;
+
+
+	public TerraEcopoiesisBlockStorage() {
 
 		super(Material.iron);
 		setHardness(5.0F);
@@ -38,17 +48,15 @@ public class TerraBlockStorage extends Block implements IInitializer
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-
-		for (int i = 0; i < NAMES.length; i++) {
-			list.add(new ItemStack(item, 1, i));
-		}
+	public void getSubBlocks(Item item, CreativeTabs tab, List list) 
+	{
+		list.add(new ItemStack(item, 1));
 	}
 
 	@Override
 	public int getLightValue(IBlockAccess world, int x, int y, int z) {
 
-		return LIGHT[world.getBlockMetadata(x, y, z)];
+		return LIGHT;
 	}
 
 	@Override
@@ -60,13 +68,13 @@ public class TerraBlockStorage extends Block implements IInitializer
 	@Override
 	public float getBlockHardness(World world, int x, int y, int z) {
 
-		return HARDNESS[world.getBlockMetadata(x, y, z)];
+		return HARDNESS;
 	}
 
 	@Override
 	public float getExplosionResistance(Entity entity, World world, int x, int y, int z, double explosionX, double explosionY, double explosionZ) {
 
-		return RESISTANCE[world.getBlockMetadata(x, y, z)];
+		return RESISTANCE;
 	}
 
 	@Override
@@ -90,60 +98,40 @@ public class TerraBlockStorage extends Block implements IInitializer
 	@Override
 	public IIcon getIcon(int side, int metadata) {
 
-		return IconRegistry.getIcon("Storage", metadata);
+		return IconRegistry.getIcon("Storage"+ StringHelper.titleCase(NAME));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister ir) {
-
-		for (int i = 0; i < NAMES.length; i++) {
-			IconRegistry.addIcon("Storage" + i, "terracraft:storage/Block_" + StringHelper.titleCase(NAMES[i]), ir);
-		}
+	public void registerBlockIcons(IIconRegister ir) 
+	{		
+		IconRegistry.addIcon("Storage" + StringHelper.titleCase(NAME), "terracraft:storage/Block_" + StringHelper.titleCase(NAME), ir);
 	}
 
 	/* IInitializer */
 	@Override
-	public boolean preInit() {
-
-		GameRegistry.registerBlock(this, TerraItemBlockStorage.class, "Storage");
-
-
+	public boolean preInit() 
+	{
+		GameRegistry.registerBlock(this, TerraEcopoiesisItemBlockStorage.class, "Storage");
 		blockEcopoiesis = new ItemStack(this, 1, 5);
-		blockGenesis = new ItemStack(this, 1, 6);
-
-
 		ItemHelper.registerWithHandlers("blockEcopoiesis", blockEcopoiesis);
-		ItemHelper.registerWithHandlers("blockGenesis", blockGenesis);
-
-
 		return true;
 	}
 
 	@Override
-	public boolean initialize() {
-
+	public boolean initialize() 
+	{
 		return true;
 	}
 
 	@Override
-	public boolean postInit() {
-
+	public boolean postInit() 
+	{
 		ItemHelper.addStorageRecipe(blockEcopoiesis, "ingotEcopoiesis");
-		ItemHelper.addStorageRecipe(blockGenesis, "ingotGenesis");
-
-
 		return true;
 	}
 
-	public static final String[] NAMES = {  "ecopoiesis", "genesis" };
-	public static final int[] LIGHT = { 15, 4 };
-	public static final float[] HARDNESS = { 5, 40 };
-	public static final float[] RESISTANCE = { 9, 120 };
-	public static final int[] RARITY = {  1, 2 };
-
-	public static ItemStack blockEcopoiesis;
-	public static ItemStack blockGenesis;
+	
 
 
 }

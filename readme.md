@@ -35,7 +35,7 @@ Current Features:
 	- Config Customizing
 		- Each feature/block/effect will be customizable via the server config.  THis is to allow server operators the ability to tweak and alter this mod to their needs.
 
-For sure features:
+Upcoming features:
 
 	- Advanced Biome Changing Block
 		- This will the middle tier of the biome changing block.  This will be a multiblock structure that takes in power and eco fluid to regenerate biomes.  Custom
@@ -54,9 +54,59 @@ For sure features:
 	- Terraforming Effects:
 		- While terraforming is in progress certain effects (sky color/lightning) will be present to the user as well.
 		
+	- Armor:
+		- While each of the ores have their own toolset, I will be creating ONE armor set that is a combination of each ore.  This armor set will have special effects that complement the tools as well.
 		
-Upcoming Textures:
+	- Thermal Foundation Integration:
+		- If the mod detects that thermal foundation is integrated, I plan on providing a config option to integrate my recipes with TF to utilize their ores.
+		
+
+Potential Features:
+
+	- Baubles integration:
+		- Now I know everyone won't want to use the armor because they would like to use a plethora of alternatives, so I am considering adding the Baubles API such that trinkets can be created to 
+		  complement the players favorite armor with the benefits of TerraCraft effects.  The will of course be of a lesser potency to not render the armor useless.
+		  
+		
+		
+Current textures:
+
+	- Genesis Tools
+		- Hoe
+		- Sword
+		- Sickle
+		- Axe
+		- Pickaxe
+		- Shovel
+		
+	- Ecopoiesis Tools
+		- Hoe
+		- Sword
+		- Sickle
+		- Axe
+		- Pickaxe
+		- Shovel
 	
+	- Genesis Ore-related
+		- Ore Block
+		- Block
+		- Ingot
+		- Dust
+		- Nugget
+		- Gear
+		- Fluid
+		- Bucket
+	
+	- Ecopoiesis Ore-related
+		- Ore Block
+		- Block
+		- Ingot
+		- Dust
+		- Nugget
+		- Gear
+		- Fluid
+		- Bucket
+
 		
 
 

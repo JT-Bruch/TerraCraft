@@ -28,10 +28,18 @@ import net.minecraft.world.World;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.event.ForgeEventFactory;
 
-public class TerraBlockOre extends Block implements IInitializer
+public class TerraEcopoiesisBlockOre extends Block implements IInitializer
 {
 	
-	public TerraBlockOre() {
+	public static final String NAME = "ecopoiesis";
+	public static final int ORE_NDX = 0;
+	public static final int LIGHT = 4;
+	public static final int RARITY = 1;
+
+	public static ItemStack oreEcopoiesis;
+	
+	
+	public TerraEcopoiesisBlockOre() {
 
 		super(Material.rock);
 		setHardness(3.0F);
@@ -47,17 +55,15 @@ public class TerraBlockOre extends Block implements IInitializer
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-
-		for (int i = 0; i < NAMES.length; i++) {
-			list.add(new ItemStack(item, 1, i));
-		}
+	public void getSubBlocks(Item item, CreativeTabs tab, List list) 
+	{		
+		list.add(new ItemStack(item, 1));
 	}
 
 	@Override
 	public int getLightValue(IBlockAccess world, int x, int y, int z) {
 
-		return LIGHT[world.getBlockMetadata(x, y, z)];
+		return LIGHT;
 	}
 
 	@Override
@@ -69,16 +75,16 @@ public class TerraBlockOre extends Block implements IInitializer
 	@Override
 	public IIcon getIcon(int side, int metadata) {
 
-		return IconRegistry.getIcon("Ore", metadata);
+		return IconRegistry.getIcon("Ore" + StringHelper.titleCase(NAME));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister ir) {
+	public void registerBlockIcons(IIconRegister ir) 
+	{
+		
+	  IconRegistry.addIcon("Ore" + StringHelper.titleCase(NAME), "terracraft:ore/Ore_" + StringHelper.titleCase(NAME), ir);
 
-		for (int i = 0; i < NAMES.length; i++) {
-			IconRegistry.addIcon("Ore" + i, "terracraft:ore/Ore_" + StringHelper.titleCase(NAMES[i]), ir);
-		}
 	}
 	
 	@Override
@@ -106,15 +112,9 @@ public class TerraBlockOre extends Block implements IInitializer
 	@Override
 	public boolean preInit() {
 
-		GameRegistry.registerBlock(this, TerraItemBlockOre.class, "Ore");
-
-
+		GameRegistry.registerBlock(this, TerraEcopoiesisItemBlockOre.class, "Ore");
 		oreEcopoiesis = new ItemStack(this, 1, 5);
-		oreGenesis = new ItemStack(this, 1, 6);
-
-
 		ItemHelper.registerWithHandlers("oreEcopoiesis", oreEcopoiesis);
-		ItemHelper.registerWithHandlers("oreGenesis", oreGenesis);
 
 		return true;
 	}
@@ -126,20 +126,13 @@ public class TerraBlockOre extends Block implements IInitializer
 	}
 
 	@Override
-	public boolean postInit() {
-
+	public boolean postInit() 
+	{
 		FurnaceRecipes.smelting().func_151394_a(oreEcopoiesis, TerraItems.ingotEcopoiesis, 1.0F);
-		FurnaceRecipes.smelting().func_151394_a(oreGenesis, TerraItems.ingotGenesis, 1.5F);
-
 		return true;
 	}
 
-	public static final String[] NAMES = { "ecopoiesis", "genesis"};
-	public static final int[] LIGHT = { 4, 8 };
-	public static final int[] RARITY = { 1, 2 };
-
-	public static ItemStack oreEcopoiesis;
-	public static ItemStack oreGenesis;
+	
 
 
 }

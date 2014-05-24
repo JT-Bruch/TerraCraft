@@ -15,22 +15,31 @@ import net.minecraftforge.fluids.FluidRegistry;
 
 public class TerraBlocks
 {
-	public static TerraBlockOre blockOre;
-	public static TerraBlockStorage blockStorage;
+	public static TerraGenesisBlockOre blockGenesisOre;
+	public static TerraGenesisBlockStorage blockGenesisStorage;
+	
+	public static TerraEcopoiesisBlockOre blockEcopoiesisOre;
+	public static TerraEcopoiesisBlockStorage blockEcopoiesisStorage;
 
 	public static BlockFluidTerraBase blockFluidEcopoiesis;
 	public static BlockFluidTerraBase blockFluidGenesis;
 	
 	public static void preInit() {
 
-		blockOre = new TerraBlockOre();
-		blockStorage = new TerraBlockStorage();
+		blockGenesisOre = new TerraGenesisBlockOre();
+		blockGenesisStorage = new TerraGenesisBlockStorage();
+		
+		blockEcopoiesisOre = new TerraEcopoiesisBlockOre();
+		blockEcopoiesisStorage = new TerraEcopoiesisBlockStorage();
 
 		blockFluidEcopoiesis = new BlockFluidEcopoiesis();
 		blockFluidGenesis = new BlockFluidGenesis();
 		
-		blockOre.preInit();
-		blockStorage.preInit();
+		blockGenesisOre.preInit();
+		blockGenesisStorage.preInit();
+		
+		blockEcopoiesisOre.preInit();
+		blockEcopoiesisStorage.preInit();
 
 		blockFluidEcopoiesis.preInit();
 		blockFluidGenesis.preInit();
@@ -43,7 +52,11 @@ public class TerraBlocks
 
 	public static void postInit() {
 
-		blockOre.postInit();
+		blockGenesisOre.postInit();
+		blockGenesisStorage.postInit();
+		
+		blockEcopoiesisOre.postInit();
+		blockEcopoiesisStorage.postInit();
 	}
 
 

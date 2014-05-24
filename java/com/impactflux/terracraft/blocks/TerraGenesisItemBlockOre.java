@@ -8,10 +8,10 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
-public class TerraItemBlockStorage extends ItemBlock 
+public class TerraGenesisItemBlockOre extends ItemBlock
 {
 
-	public TerraItemBlockStorage(Block block) {
+	public TerraGenesisItemBlockOre(Block block) {
 
 		super(block);
 		setHasSubtypes(true);
@@ -27,7 +27,7 @@ public class TerraItemBlockStorage extends ItemBlock
 	@Override
 	public String getUnlocalizedName(ItemStack item) {
 
-		return "tile.terracraft.storage." + TerraBlockStorage.NAMES[item.getItemDamage()] + ".name";
+		return "tile.terracraft.ore." + TerraGenesisBlockOre.NAME + ".name";
 	}
 
 	@Override
@@ -39,8 +39,7 @@ public class TerraItemBlockStorage extends ItemBlock
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 
-		return EnumRarity.values()[TerraBlockStorage.RARITY[ItemHelper.getItemDamage(stack)]];
+		return EnumRarity.values()[TerraGenesisBlockOre.RARITY];
 	}
-
 
 }
