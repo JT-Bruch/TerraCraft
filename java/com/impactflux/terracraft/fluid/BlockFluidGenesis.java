@@ -23,7 +23,6 @@ public class BlockFluidGenesis extends BlockFluidTerraBase
 		super("terracraft", TerraFluids.fluidGenesis, materialFluidGenesis, "Genesis");
 		setQuantaPerBlock(LEVELS);
 		setTickRate(30);
-
 		setHardness(2000F);
 		setLightOpacity(7);
 		setParticleColor(0.05F, 0.2F, 0.2F);
