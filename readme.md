@@ -9,8 +9,8 @@ Welcome to TerraCraft.
    grief proof way to alter the biomes that they have created.  Additionally, my goal is to provide unique tools to the players that aren't based on power gen or ore processing.
    
    Currently I am in an extremely alpha state, however I have already created the algorithm that replaces the biome.  The next month or so will be flushing out the mod to include
-   all the tools, blocks, textures and gui's to make this a first class mod.  Once the first build goes Alpha.  I will be closing the source of the mod.  However I am in need of 
-   textures (I'm a software developer, not a graphic artist) and I will gladly provide personal support and beta builds to those who contribute.  
+   all the tools, blocks, textures and gui's to make this a first class mod.  Once the first build goes Alpha.  I will be closing the source of the mod.  I have been in contact with
+   a texture guy so hopefully I will have an alpha build within a week or so.
    
    Furthermore, I will be creating a 1.7.2 server that people are welcome to come and play one once I get an Alpha version of the mod up.  Now to the good stuff
 
@@ -36,6 +36,7 @@ Current Features:
 		- Each feature/block/effect will be customizable via the server config.  THis is to allow server operators the ability to tweak and alter this mod to their needs.
 
 For sure features:
+
 	- Advanced Biome Changing Block
 		- This will the middle tier of the biome changing block.  This will be a multiblock structure that takes in power and eco fluid to regenerate biomes.  Custom
 		  renderings and guis will be provided to the user to select the biome types that it can be terraformed into.
@@ -53,6 +54,9 @@ For sure features:
 	- Terraforming Effects:
 		- While terraforming is in progress certain effects (sky color/lightning) will be present to the user as well.
 		
+		
+Upcoming Textures:
+	
 		
 
 
