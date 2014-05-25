@@ -4,8 +4,10 @@ import cofh.util.ItemHelper;
 import gnu.trove.set.hash.THashSet;
 import gnu.trove.set.hash.TLinkedHashSet;
 
+import java.util.ArrayList;
 import java.util.Set;
 
+import com.impactflux.terracraft.blocks.TerraBlocks;
 import com.impactflux.terracraft.blocks.TerraGenesisBlockOre;
 
 import net.minecraft.block.Block;
@@ -145,6 +147,76 @@ public abstract class TerraItemToolAdv extends ItemTool {
 		}
 		return super.getDigSpeed(stack, block, meta);
 	}
+	
+	public boolean IsBlockTypeReplaceableForPickaxe(Block blockType)
+	{
+		boolean bRetVal = false;
+		if( blockType == Blocks.sandstone  ||
+			blockType == Blocks.stone      ||
+			blockType == Blocks.netherrack       ||
+			blockType == Blocks.end_stone  
+											)
+		{
+			bRetVal = true;  
+		}
+		return(bRetVal);
+		
+	}
+	
+	public boolean IsBlockTypeReplaceableForShovel(Block blockType)
+	{
+		boolean bRetVal = false;
+		if( blockType == Blocks.gravel  ||
+			blockType == Blocks.dirt      ||
+			blockType == Blocks.sand       ||
+			blockType == Blocks.clay  
+											)
+		{
+			bRetVal = true;  
+		}
+		return(bRetVal);
+		
+	}
+	
+	public boolean IsBlockTypeReplaceableForAxe(Block blockType)
+	{
+		boolean bRetVal = false;
+		if( blockType == Blocks.log )
+		{
+			bRetVal = true;  
+		}
+		return(bRetVal);
+		
+	}
+	
+	public boolean allowGenesisEffectToReplace(Block block)
+	{
+		boolean bRetVal = false;
+		
+		if( TerraBlocks.blockGenesisOre == block )
+		{
+			bRetVal = true;
+		}
+		return(bRetVal);
+	}
+	
+
+	
+	public ArrayList<Block> getGenesisReplacementBlockTypeArray()
+	{	
+		ArrayList<Block> repBlockArray = new ArrayList<Block>();
+		
+		repBlockArray.add(Blocks.diamond_block);
+		repBlockArray.add(Blocks.gold_block);
+		repBlockArray.add(Blocks.iron_block);
+		repBlockArray.add(Blocks.emerald_block);
+		repBlockArray.add(Blocks.lapis_block);
+		repBlockArray.add(Blocks.quartz_block);
+		
+		
+		return(repBlockArray);
+	}
+	
 	
 
 

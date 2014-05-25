@@ -46,15 +46,20 @@ public class ItemPickaxeGenesis extends TerraItemPickaxeAdv
 		if (block.getBlockHardness(world, x, y, z) == 0.0D) {
 			return true;
 		}
+		if( !TerraItems.genesisEnableFeature[TerraItems.PICKAXE] )
+		{
+			return true;
+		}
+		
 		EntityPlayer player = (EntityPlayer) entity;
 		
-		if( !isGenesisReplaceable(block) )
+		if( !allowGenesisEffectToReplace(block) )
 		{
 			return true;
 		}
 		else
 		{
-			ArrayList<Block> blockTypes = getReplacementBlockTypeArray();
+			ArrayList<Block> blockTypes = getGenesisReplacementBlockTypeArray();
 
 	        MovingObjectPosition mop = AbilityHelper.raytraceFromEntity(world, player, true, 4.5D);
 	        if (mop == null)
@@ -89,10 +94,10 @@ public class ItemPickaxeGenesis extends TerraItemPickaxeAdv
 	                {
 	                	int randBlockType = Math.abs( rand.nextInt() % blockTypes.size() );
 	                	int effectChance = Math.abs(rand.nextInt() % 100);
-	                	boolean bVal = TerraBiomeChangeLogic.IsBlockTypeReplaceable(world.getBlock(xPos, yPos, zPos));
+	                	boolean bVal = IsBlockTypeReplaceableForPickaxe(world.getBlock(xPos, yPos, zPos));
 	                	if( bVal )
 	                	{	
-	                		if( effectChance <= TerraItems.PickaxeGenesisEffectChance  )
+	                		if( effectChance <= TerraItems.ecopoiesisFeatureChance[TerraItems.PICKAXE]  )
 	                		{
 	                			world.setBlock(xPos, yPos, zPos, blockTypes.get(randBlockType));
 	                		}
@@ -104,47 +109,9 @@ public class ItemPickaxeGenesis extends TerraItemPickaxeAdv
 		return true;
 	}
 	
-	public boolean isGenesisReplaceable(Block block)
-	{
-		boolean bRetVal = false;
-		
-		if( TerraBlocks.blockGenesisOre == block )
-		{
-			bRetVal = true;
-		}
-		return(bRetVal);
-	}
-	
-	public ArrayList<BlockCoord> getReplaceableBlockArray(World world, int x, int y, int z)
-	{
-		ArrayList<BlockCoord> repBlockArray = new ArrayList<BlockCoord>();
-		
-		repBlockArray.add(new BlockCoord(x, y, z - 1));
-		repBlockArray.add(new BlockCoord(x, y + 1, z - 1));
-		repBlockArray.add(new BlockCoord(x, y - 1, z - 1));
-		repBlockArray.add(new BlockCoord(x, y, z + 1));
-		repBlockArray.add(new BlockCoord(x, y + 1, z + 1));
-		repBlockArray.add(new BlockCoord(x, y - 1, z + 1));
-		repBlockArray.add(new BlockCoord(x, y + 1, z));
-		repBlockArray.add(new BlockCoord(x, y - 1, z));
-		return(repBlockArray);
-	}
+
 	
 	
-	public ArrayList<Block> getReplacementBlockTypeArray()
-	{	
-		ArrayList<Block> repBlockArray = new ArrayList<Block>();
-		
-		repBlockArray.add(Blocks.diamond_block);
-		repBlockArray.add(Blocks.gold_block);
-		repBlockArray.add(Blocks.iron_block);
-		repBlockArray.add(Blocks.emerald_block);
-		repBlockArray.add(Blocks.lapis_block);
-		repBlockArray.add(Blocks.quartz_block);
-		
-		
-		return(repBlockArray);
-	}
 
 
 	

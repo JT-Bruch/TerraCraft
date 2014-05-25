@@ -39,8 +39,6 @@ public class TerraItems
 	public static final String TOOL_TEX_GENESIS = "terracraft:tool/Genesis";
 	public static final String TOOL_TEX_ECOPOIESIS = "terracraft:tool/Ecopoiesis";
 	
-	public static int PickaxeGenesisEffectChance;
-	
 	
 	public static void preInit() 
 	{
@@ -100,7 +98,7 @@ public class TerraItems
 		
 		String category = "itemtweaks";
 		String comment = "Random chance to have the item spawn its effect";
-		PickaxeGenesisEffectChance = TerraCraft.config.get(category, "Fluid.Ecopoiesis.Effect", 3, comment);
+
 		
 		
 	}
@@ -175,30 +173,89 @@ public class TerraItems
 
 	}
 	
-	public static boolean[] genesisEnable = new boolean[8];
-	public static boolean[] ecopoiesisEnable = new boolean[8];
+	public static boolean[] genesisEnable = new boolean[6];
+	public static boolean[] ecopoiesisEnable = new boolean[6];
+	
+	public static boolean[] genesisEnableFeature = new boolean[6];
+	public static boolean[] ecopoiesisEnableFeature = new boolean[6];
+	
+	
+	public static int[] genesisFeatureChance = new int[6];
+	public static int[] ecopoiesisFeatureChance = new int[6];
+	public static int AXE = 0,
+					   SWORD = 1, 
+					   SHOVEL = 2, 
+					   PICKAXE = 3,
+					   HOE = 4,
+					   SICKLE = 5;
+	
 	
 	static {
-		String category = "item.feature";
-		genesisEnable[0] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Axe", true);
-		genesisEnable[2] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Sword", true);
-		genesisEnable[3] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Shovel", true);
-		genesisEnable[4] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Pickaxe", true);
-		genesisEnable[5] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Hoe", true);
-		genesisEnable[6] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Sickle", true);
+		String category = "genesisitem.enableitem";
+		genesisEnable[AXE] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Axe", true);
+		genesisEnable[SWORD] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Sword", true);
+		genesisEnable[SHOVEL] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Shovel", true);
+		genesisEnable[PICKAXE] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Pickaxe", true);
+		genesisEnable[HOE] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Hoe", true);
+		genesisEnable[SICKLE] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Sickle", true);
 
 	}
 	
 	static {
-		String category = "item.feature";
-		ecopoiesisEnable[0] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Axe", true);
-		ecopoiesisEnable[2] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Sword", true);
-		ecopoiesisEnable[3] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Shovel", true);
-		ecopoiesisEnable[4] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Pickaxe", true);
-		ecopoiesisEnable[5] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Hoe", true);
-		ecopoiesisEnable[6] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Sickle", true);
+		String category = "ecopoiesisitem.enableitem";
+		ecopoiesisEnable[AXE] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Axe", true);
+		ecopoiesisEnable[SWORD] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Sword", true);
+		ecopoiesisEnable[SHOVEL] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Shovel", true);
+		ecopoiesisEnable[PICKAXE] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Pickaxe", true);
+		ecopoiesisEnable[HOE] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Hoe", true);
+		ecopoiesisEnable[SICKLE] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Sickle", true);
 
 	}
+	
+	static {
+		String category = "genesisitem.feature";
+		genesisEnableFeature[AXE] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Axe", true);
+		genesisEnableFeature[SWORD] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Sword", true);
+		genesisEnableFeature[SHOVEL] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Shovel", true);
+		genesisEnableFeature[PICKAXE] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Pickaxe", true);
+		genesisEnableFeature[HOE] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Hoe", true);
+		genesisEnableFeature[SICKLE] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Sickle", true);
+
+	}
+	
+	static {
+		String category = "ecopoiesisitem.feature";
+		ecopoiesisEnableFeature[AXE] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Axe", true);
+		ecopoiesisEnableFeature[SWORD] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Sword", true);
+		ecopoiesisEnableFeature[SHOVEL] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Shovel", true);
+		ecopoiesisEnableFeature[PICKAXE] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Pickaxe", true);
+		ecopoiesisEnableFeature[HOE] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Hoe", true);
+		ecopoiesisEnableFeature[SICKLE] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Sickle", true);
+
+	}
+	
+	static {
+		String category = "genesisitem.feature.chance";
+		genesisFeatureChance[AXE] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Axe", 3);
+		genesisFeatureChance[SWORD] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Sword", 3);
+		genesisFeatureChance[SHOVEL] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Shovel", 3);
+		genesisFeatureChance[PICKAXE] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Pickaxe", 3);
+		genesisFeatureChance[HOE] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Hoe", 3);
+		genesisFeatureChance[SICKLE] = TerraCraft.config.get(category, TOOL_CONFIG_GENESIS + "Sickle", 3);
+
+	}
+	
+	static {
+		String category = "ecopoiesisitem.feature.chance";
+		ecopoiesisFeatureChance[AXE] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Axe", 3);
+		ecopoiesisFeatureChance[SWORD] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Sword", 3);
+		ecopoiesisFeatureChance[SHOVEL] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Shovel", 3);
+		ecopoiesisFeatureChance[PICKAXE] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Pickaxe", 3);
+		ecopoiesisFeatureChance[HOE] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Hoe", 3);
+		ecopoiesisFeatureChance[SICKLE] = TerraCraft.config.get(category, TOOL_CONFIG_ECOPOIESIS + "Sickle", 3);
+
+	}
+
 
 
 	public static TerraItemBucket itemBucket;
