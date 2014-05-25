@@ -40,61 +40,55 @@ public class ItemShovelGenesis extends TerraItemShovelAdv
 		
 		EntityPlayer player = (EntityPlayer) entity;
 		
-		if( !allowGenesisEffectToReplace(block) )
-		{
-			return true;
-		}
-		else
-		{
-			ArrayList<Block> blockTypes = getGenesisReplacementBlockTypeArray();
+		ArrayList<Block> blockTypes = getGenesisReplacementOreTypeArray();
 			
 			
 
-	        MovingObjectPosition mop = AbilityHelper.raytraceFromEntity(world, player, true, 4.5D);
-	        if (mop == null)
-	            return super.onBlockStartBreak(stack, x, y, z, player);
+        MovingObjectPosition mop = AbilityHelper.raytraceFromEntity(world, player, true, 4.5D);
+        if (mop == null)
+            return super.onBlockStartBreak(stack, x, y, z, player);
 
-	        int xRange = 1;
-	        int yRange = 1;
-	        int zRange = 1;
-	        switch (mop.sideHit)
-	        {
-	        case 0:
-	        case 1:
-	            yRange = 0;
-	            break;
-	        case 2:
-	        case 3:
-	            zRange = 0;
-	            break;
-	        case 4:
-	        case 5:
-	            xRange = 0;
-	            break;
-	        }
+        int xRange = 1;
+        int yRange = 1;
+        int zRange = 1;
+        switch (mop.sideHit)
+        {
+        case 0:
+        case 1:
+            yRange = 0;
+            break;
+        case 2:
+        case 3:
+            zRange = 0;
+            break;
+        case 4:
+        case 5:
+            xRange = 0;
+            break;
+        }
 
 
-	        Random rand = new Random();
-	        for (int xPos = x - xRange; xPos <= x + xRange; xPos++)
-	        {
-	            for (int yPos = y - yRange; yPos <= y + yRange; yPos++)
-	            {
-	                for (int zPos = z - zRange; zPos <= z + zRange; zPos++)
-	                {
-	                	int randBlockType = Math.abs( rand.nextInt() % blockTypes.size() );
-	                	int effectChance = Math.abs(rand.nextInt() % 100);
-	                	boolean bVal = IsBlockTypeReplaceableForShovel(world.getBlock(xPos, yPos, zPos));
-	                	if( bVal )
-	                	{	
-	                		if( effectChance <= TerraItems.genesisFeatureChance[TerraItems.SHOVEL]  )
-	                		{
-	                			world.setBlock(xPos, yPos, zPos, blockTypes.get(randBlockType));
-	                		}
-	                	}
-	                }
-	            }
-	        }
-		}
+        Random rand = new Random();
+        for (int xPos = x - xRange; xPos <= x + xRange; xPos++)
+        {
+            for (int yPos = y - yRange; yPos <= y + yRange; yPos++)
+            {
+                for (int zPos = z - zRange; zPos <= z + zRange; zPos++)
+                {
+                	int randBlockType = Math.abs( rand.nextInt() % blockTypes.size() );
+                	int effectChance = Math.abs(rand.nextInt() % 100);
+                	boolean bVal = IsBlockTypeReplaceableForShovel(world.getBlock(xPos, yPos, zPos));
+                	if( bVal )
+                	{	
+                		if( effectChance <= TerraItems.genesisFeatureChance[TerraItems.SHOVEL]  )
+                		{
+                			world.setBlock(xPos, yPos, zPos, blockTypes.get(randBlockType));
+                		}
+                	}
+                }
+            }
+        }
+	
 		return true;
 	}
 

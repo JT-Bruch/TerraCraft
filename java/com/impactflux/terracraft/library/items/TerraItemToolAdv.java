@@ -10,6 +10,8 @@ import java.util.Set;
 import com.impactflux.terracraft.blocks.TerraBlocks;
 import com.impactflux.terracraft.blocks.TerraGenesisBlockOre;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,6 +19,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
 
 public abstract class TerraItemToolAdv extends ItemTool {
@@ -177,7 +180,7 @@ public abstract class TerraItemToolAdv extends ItemTool {
 		return(bRetVal);
 		
 	}
-	
+
 	public boolean IsBlockTypeReplaceableForAxe(Block blockType)
 	{
 		boolean bRetVal = false;
@@ -216,6 +219,29 @@ public abstract class TerraItemToolAdv extends ItemTool {
 		
 		return(repBlockArray);
 	}
+	
+	public ArrayList<Block> getGenesisReplacementOreTypeArray()
+	{	
+		ArrayList<Block> repBlockArray = new ArrayList<Block>();
+		
+		repBlockArray.add(Blocks.diamond_ore);
+		repBlockArray.add(Blocks.gold_ore);
+		repBlockArray.add(Blocks.iron_ore);
+		repBlockArray.add(Blocks.emerald_ore);
+		repBlockArray.add(Blocks.lapis_ore);
+		repBlockArray.add(Blocks.quartz_ore);
+		
+		
+		return(repBlockArray);
+	}
+	//
+	// Method to use to add enchanting effect
+	//
+	/*@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack par1ItemStack) {
+	     par1ItemStack.setTagInfo("ench", new NBTTagList());
+	     return true;
+	}*/
 	
 	
 

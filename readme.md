@@ -73,19 +73,31 @@ Current textures:
 
 	- Genesis Tools
 		- Hoe
+			- Effect: When harvesting crops, each crop has a 3% chance of dropping a golden version, (if exists) or doubles the seed output.  
 		- Sword
+			- Effect: When attacking an entity, has a 3% chance of applying an enchantment effect to any unenchanted armor player.
 		- Sickle
+			- Effect: When harvesting leaves, each leaf has a 3% chance of dropping a golden fruit in addition to a 50% chance of dropping saplings.
 		- Axe
+			- Effect: TBA
 		- Pickaxe
+			- Effect: When mining genesis ore, each block in a 3x3 pattern around the ore has a 3% chance to turn into a block of ingots. (DONE)
 		- Shovel
+			- Effect: When shoveling has 3% chance to turn natural dirt blocks around it into blocks of ore. (DONE)
 		
 	- Ecopoiesis Tools
 		- Hoe
+			- Effect: TBA
 		- Sword
+			- Effect: TBA
 		- Sickle
+			- Effect: TBA
 		- Axe
+			- Effect: TBA
 		- Pickaxe
+			- Effect: TBA
 		- Shovel
+			- Effect: TBA
 	
 	- Genesis Ore-related
 		- Ore Block
@@ -95,6 +107,7 @@ Current textures:
 		- Nugget
 		- Gear
 		- Fluid
+			- Effect: TBA
 		- Bucket
 	
 	- Ecopoiesis Ore-related
@@ -105,8 +118,13 @@ Current textures:
 		- Nugget
 		- Gear
 		- Fluid
+			- Effect:  When a bucket of the fluid is dropped into the world, the fluid will turn to stone and generate random pockets of dirt/gravel/clay/coal/bedrock(if less than y-level 5). (DONE)
 		- Bucket
 
+	Ore Processing Thoughts:
+		- Make the ore more common in the world, but add levels between the genesis/eco ingots/fluid and the ore itself.  The reasoning for this is that the effects are dependent upon using tools of the various ores. 
+		  If the ore is so rare, then it would be used for only terraforming and not actually the tools.  My current thought is to allow the tools to be made out of "raw <ore name> ingot" as well as a diamond embedded
+		  stick. Then allow the user to smelt the raw genesis ore 
 		
 
 
