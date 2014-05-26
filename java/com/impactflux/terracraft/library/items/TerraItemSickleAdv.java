@@ -26,6 +26,14 @@ public class TerraItemSickleAdv extends TerraItemToolAdv {
 		effectiveMaterials.add(Material.vine);
 		effectiveMaterials.add(Material.web);
 	}
+	
+	protected Material[] getEffectiveMaterials ()
+    {
+        return materials;
+    }
+
+    protected static Material[] materials = new Material[] { Material.web, Material.cactus, Material.plants, Material.leaves, Material.vine };// TODO find this//, Material.pumpkin,
+   
 
 	public TerraItemSickleAdv setRadius(int radius) {
 
