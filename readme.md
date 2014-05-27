@@ -29,11 +29,31 @@ Current Features:
 		- Each ore can be turned into a fluid which will be consumed by the biome changing blocks.  
 		
 	- Basic Biome Changing Block
-		- The algorithm that changes the biomes has been developed and inserted into this recipeless block.  This block in its current form will be removed later and replaced with
+		- The algorithm that changes the biomes has been developed and inserted into this recipeless block.  This block in its current form has been removed and will replaced with
 		  a single block that requires power, eco fluid to simply replace the biome into a random choice of four biome types.
 		  
 	- Config Customizing
 		- Each feature/block/effect will be customizable via the server config.  THis is to allow server operators the ability to tweak and alter this mod to their needs.
+		
+In Development:
+
+	- Basic Biome Changing Block
+		- A single block that requires power, eco ore to simply replace the biome into a random choice of four biome types.
+	
+	- Tool Effects
+		- Each tool of each ore type will have special effects that will be implemented to provide significant incentive for the player to use the tools.
+		
+	- Fluid Effects:
+		- Each fluid will have effects that will alter the landscape in some terraforming way.
+		 
+	- Fluid container:
+		- Each fluid will need to have a fluid container to hold the fluid before use in the more advanced blocks.
+		
+	- Fluid maker:
+		- A fluid maker block will be needed to convert the ores into workable fluids for the machine.
+	
+	- Fluid pipes:
+		- Need a set of pipes to go from fluid maker -> fluid container -> fluid tank.
 
 Upcoming features:
 
@@ -44,13 +64,7 @@ Upcoming features:
 	- Extreme Biome Changing Block 
 		- This is essentially the same as the block above, however it will intake Genesis fluid to allow the user to regenerate the ore nodes in each chunk/biome.  The one caveat
 		  is that for each time this block is ran, the number of nodes for each ore type will have a chance to decrease by one.  Essentially giving diminishing returns.
-
-	- Tool Effects
-		- Each tool of each ore type will have special effects that will be implemented to provide significant incentive for the player to use the tools.
-		
-	- Fluid Effects:
-		- Each fluid will have effects that will alter the landscape in some terraforming way.
-		
+	
 	- Terraforming Effects:
 		- While terraforming is in progress certain effects (sky color/lightning) will be present to the user as well.
 		
@@ -77,9 +91,9 @@ Current textures:
 		- Sword
 			- Effect: When attacking an entity, has a 3% chance of applying an enchantment effect to any unenchanted armor player.
 		- Sickle
-			- Effect: When harvesting leaves, each leaf has a 3% chance of dropping a golden fruit in addition to a 50% chance of dropping saplings.
+			- Effect: When harvesting leaves, each leaf has a 3% chance of dropping a golden fruit in addition to a 30% chance of dropping random dye colors.
 		- Axe
-			- Effect: TBA
+			- Effect: On right click, the axe will spawn & plant a random sapling if available on that block.
 		- Pickaxe
 			- Effect: When mining genesis ore, each block in a 3x3 pattern around the ore has a 3% chance to turn into a block of ingots. (DONE)
 		- Shovel

@@ -32,7 +32,7 @@ public class BlockFluidGenesis extends BlockFluidTerraBase
 	public boolean preInit() {
 
 		String category = "tweak";
-		String comment = "Enable this for Fluid Genesis to randomly teleport entities on contact.";
+		String comment = "Enable this for Fluid Genesis to have an effect.";
 		effect = TerraCraft.config.get(category, "Fluid.Genesis.Effect", true, comment);
 
 		GameRegistry.registerBlock(this, "FluidGenesis");

@@ -27,7 +27,7 @@ public class BlockFluidEcopoiesis extends BlockFluidTerraBase
 	public static final int LEVELS = 6;
 	public static final Material materialFluidEcopoiesis = new MaterialLiquid(MapColor.magentaColor);
 
-	private static boolean effect = true;
+	private static boolean bEffect = true;
 
 	private static int maxEcopoiesisHeight = 120;
 
@@ -46,8 +46,8 @@ public class BlockFluidEcopoiesis extends BlockFluidTerraBase
 	public boolean preInit() {
 
 		String category = "tweak";
-		String comment = "Enable this for Fluid Ecopoiesis to do...something.";
-		effect = TerraCraft.config.get(category, "Fluid.Ecopoiesis.Effect", true, comment);
+		String comment = "Enable this for Fluid Ecopoiesis to have an effect.";
+		bEffect = TerraCraft.config.get(category, "Fluid.Ecopoiesis.Effect", true, comment);
 
 		 
 		GameRegistry.registerBlock(this, "FluidEcopoiesis");
@@ -57,7 +57,7 @@ public class BlockFluidEcopoiesis extends BlockFluidTerraBase
 	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
 
-		if (!effect) {
+		if (!bEffect) {
 			return;
 		}
 		if (entity instanceof EntityLivingBase) {
@@ -74,7 +74,7 @@ public class BlockFluidEcopoiesis extends BlockFluidTerraBase
 			return;
 		}
 		if (world.getTotalWorldTime() % 8 == 0 && entity instanceof EntityLivingBase && !((EntityLivingBase) entity).isEntityUndead()) {
-			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 6 * 20, 0));
+			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(Potion.digSpeed.id, 6 * 20, 0));
 			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(Potion.jump.id, 6 * 20, 0));
 		}
 	}
