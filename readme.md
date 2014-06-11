@@ -44,16 +44,14 @@ In Development:
 		- Each tool of each ore type will have special effects that will be implemented to provide significant incentive for the player to use the tools.
 		
 	- Fluid Effects:
-		- Each fluid will have effects that will alter the landscape in some terraforming way.
-		 
-	- Fluid container:
-		- Each fluid will need to have a fluid container to hold the fluid before use in the more advanced blocks.
-		
-	- Fluid maker:
-		- A fluid maker block will be needed to convert the ores into workable fluids for the machine.
-	
-	- Fluid pipes:
-		- Need a set of pipes to go from fluid maker -> fluid container -> fluid tank.
+        - Each fluid will have effects that will alter the landscape in some terraforming way.
+    
+    - Terraforming Effects:
+        - While terraforming is in progress certain effects (sky color/lightning) will be present to the user as well.
+        
+    - Armor:
+        - While each of the ores have their own toolset, I will be creating ONE armor set that is a combination of each ore.  This armor set will have special effects that complement the tools as well.
+    
 
 Upcoming features:
 
@@ -65,14 +63,20 @@ Upcoming features:
 		- This is essentially the same as the block above, however it will intake Genesis fluid to allow the user to regenerate the ore nodes in each chunk/biome.  The one caveat
 		  is that for each time this block is ran, the number of nodes for each ore type will have a chance to decrease by one.  Essentially giving diminishing returns.
 	
-	- Terraforming Effects:
-		- While terraforming is in progress certain effects (sky color/lightning) will be present to the user as well.
-		
-	- Armor:
-		- While each of the ores have their own toolset, I will be creating ONE armor set that is a combination of each ore.  This armor set will have special effects that complement the tools as well.
 		
 	- Thermal Foundation Integration:
 		- If the mod detects that thermal foundation is integrated, I plan on providing a config option to integrate my recipes with TF to utilize their ores.
+		
+		
+	     
+    - Fluid container:
+        - Each fluid will need to have a fluid container to hold the fluid before use in the more advanced blocks.
+        
+    - Fluid maker:
+        - A fluid maker block will be needed to convert the ores into workable fluids for the machine.
+    
+    - Fluid pipes:
+        - Need a set of pipes to go from fluid maker -> fluid container -> fluid tank.
 		
 
 Potential Features:

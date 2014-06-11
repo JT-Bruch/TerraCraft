@@ -6,6 +6,7 @@ import com.impactflux.terracraft.fluid.BlockFluidEcopoiesis;
 import com.impactflux.terracraft.fluid.BlockFluidGenesis;
 import com.impactflux.terracraft.fluid.BlockFluidTerraBase;
 import com.impactflux.terracraft.library.RegisterHelper;
+import com.impactflux.terracraft.tileentities.TerraBasicBiomeChangerTileEntity;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -24,6 +25,9 @@ public class TerraBlocks
 	public static BlockFluidTerraBase blockFluidEcopoiesis;
 	public static BlockFluidTerraBase blockFluidGenesis;
 	
+	public static TerraBasicBiomeChangerBlock blockBasicBiomeChanger;
+	public static TerraBasicBiomeChangerTileEntity tileBasicBiomeChanger;
+	
 	public static void preInit() 
 	{
 		blockGenesisOre = new TerraGenesisBlockOre();
@@ -35,6 +39,9 @@ public class TerraBlocks
 		blockFluidEcopoiesis = new BlockFluidEcopoiesis();
 		blockFluidGenesis = new BlockFluidGenesis();
 		
+		blockBasicBiomeChanger = new TerraBasicBiomeChangerBlock();
+		tileBasicBiomeChanger = new TerraBasicBiomeChangerTileEntity();
+		
 		blockGenesisOre.preInit();
 		blockGenesisStorage.preInit();
 		
@@ -43,6 +50,10 @@ public class TerraBlocks
 
 		blockFluidEcopoiesis.preInit();
 		blockFluidGenesis.preInit();
+		
+		blockBasicBiomeChanger.preInit();
+		tileBasicBiomeChanger.preInit();
+		
 
 	}
 
