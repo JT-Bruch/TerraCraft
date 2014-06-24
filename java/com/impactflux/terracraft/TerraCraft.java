@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import cpw.mods.fml.common.network.FMLEmbeddedChannel;
 import cpw.mods.fml.common.network.FMLOutboundHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.FMLOutboundHandler.OutboundTarget;
 import cpw.mods.fml.relauncher.Side;
 import net.minecraft.item.Item;
@@ -23,11 +24,12 @@ import com.impactflux.terracraft.fluid.TerraFluids;
 import com.impactflux.terracraft.gui.TerraCraftCreativeTab;
 import com.impactflux.terracraft.items.TerraItems;
 import com.impactflux.terracraft.library.ConfigHandler;
+import com.impactflux.terracraft.library.GuiHandler;
 import com.impactflux.terracraft.library.RegisterHelper;
 import com.impactflux.terracraft.library.TerraCraftReference;
 import com.impactflux.terracraft.library.TerraCraftWorldGenerator;
-
 import com.impactflux.terracraft.recipes.TerraRecipes;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -46,6 +48,7 @@ public class TerraCraft
 {
 	public static final String version = TerraCraftReference.VERSION;
 	public static final String modId = TerraCraftReference.MODID;
+	@Mod.Instance
 	public static TerraCraft instance;
 	public static final CreativeTabs tab = new TerraCraftCreativeTab();
 	public static ConfigHandler config = new ConfigHandler(version);
@@ -85,7 +88,7 @@ public class TerraCraft
 		TerraFluids.initialize();
 		TerraItems.initialize();
 		TerraBlocks.initialize();
-
+		NetworkRegistry.INSTANCE.registerGuiHandler(TerraCraft.instance, new GuiHandler());
 	
 	}
 

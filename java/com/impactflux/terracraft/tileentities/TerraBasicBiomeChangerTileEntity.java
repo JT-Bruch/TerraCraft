@@ -2,7 +2,9 @@ package com.impactflux.terracraft.tileentities;
 
 import cofh.api.core.IInitializer;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TerraBasicBiomeChangerTileEntity extends TileEntity implements IInitializer 
 {
@@ -24,5 +26,7 @@ public class TerraBasicBiomeChangerTileEntity extends TileEntity implements IIni
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
+	
 
 }
