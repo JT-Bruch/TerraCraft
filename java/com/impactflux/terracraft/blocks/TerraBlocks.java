@@ -59,6 +59,8 @@ public class TerraBlocks
 
 	public static void initialize() 
 	{
+		
+		tileBasicBiomeChanger.initialize();
 
 	}
 

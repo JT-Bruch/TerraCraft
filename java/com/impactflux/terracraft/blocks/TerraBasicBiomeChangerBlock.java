@@ -26,16 +26,19 @@ public class TerraBasicBiomeChangerBlock extends Block implements IInitializer
 	public static Block blockBasicBiomeChanger;
 	public static final String NAME = "basicBiomeChanger";
 	public static final int LIGHT = 4;
+	private boolean m_bBlockActivated = false;
+	
+
+    
 	
 	public TerraBasicBiomeChangerBlock()
 	{
 		super(Material.anvil);
 		setHardness(3.0F);
 		setResistance(5.0F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundTypeMetal);
 		setCreativeTab(TerraCraft.tab);
-		setBlockName("terracraft.biomechanger");
-		
+		setBlockName("terracraft.biomechanger");		
 	}
 
 	@Override
@@ -84,25 +87,60 @@ public class TerraBasicBiomeChangerBlock extends Block implements IInitializer
 	}
 
 	@Override
-	public IIcon getIcon(int side, int metadata) {
+	public IIcon getIcon(int side, int metadata) 
+	{
+		String name = NAME;
+		switch(side)
+        {
+            case 2: 
+            	name = name + "_front"; 
+            break;
+            case 1: 
+            	name = name + "_sides";
+            break;
+            case 3: 
+            	name = name + "_sides";
+            break;
+            case 4: 
+            	name = name + "_sides";
+            break;
+            case 5: 
+            	name = name + "_sides";
+            break;
+            case 6: 
+            	name = name + "_sides";
+            break;
+        }
+		
+		
 
-		return IconRegistry.getIcon("Tile" + StringHelper.titleCase(NAME));
+		return IconRegistry.getIcon("Tile" + StringHelper.titleCase(name));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir) 
 	{
-		
-	  IconRegistry.addIcon("Tile" + StringHelper.titleCase(NAME), "terracraft:tile/Tile_" + StringHelper.titleCase(NAME), ir);
+	  IconRegistry.addIcon("Tile" + StringHelper.titleCase(NAME) + "_front", "terracraft:tile/Tile_" + StringHelper.titleCase(NAME) + "_front", ir);
+	  IconRegistry.addIcon("Tile" + StringHelper.titleCase(NAME) + "_sides", "terracraft:tile/Tile_" + StringHelper.titleCase(NAME) + "_sides", ir);
 
 	}
 	
 	@Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int par1, float par2, float par3, float par4)
-    {
-        entityPlayer.openGui(TerraCraft.instance, 0, world, x ,y, z);
-        return true;
+    {   
+		// Drop through if the player is sneaking
+		if(entityPlayer.isSneaking()) 
+		{
+			return false;
+		}
+		m_bBlockActivated = !m_bBlockActivated;
+		return m_bBlockActivated;
     }
+	
+	public boolean IsBiomeChangingActive()
+	{
+		return m_bBlockActivated;
+	}
 
 }

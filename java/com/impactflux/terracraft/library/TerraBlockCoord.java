@@ -1,49 +1,53 @@
 package com.impactflux.terracraft.library;
 
+import java.io.Serializable;
+
+import cofh.util.BlockCoord;
 import net.minecraft.block.Block;
 
-public class TerraBlockCoord
+public class TerraBlockCoord implements Comparable<TerraBlockCoord>, Serializable 
 {
 	private int xCoord = 0;
 	private int yCoord = 0;
 	private int zCoord = 0;
 	private Block blockType;
-	private boolean bValid = true;
-	private int biomeType = -1;
+	private Block initialblockType;
 	
-	public TerraBlockCoord(int X, int Y, int Z, int BiomeType, Block block)
+	public TerraBlockCoord(int X, int Y, int Z, Block block)
 	{
 		xCoord = X;
 		yCoord = Y;
 		zCoord = Z;
 		blockType = block;
-		biomeType = BiomeType;
-		
-		if(yCoord < 0 && yCoord > 256)
-		{
-			bValid = false;
-		}
 	}
 	
+	public TerraBlockCoord(TerraBlockCoord nextBlockToReplace) 
+	{
+		this.xCoord = nextBlockToReplace.xCoord;
+		this.yCoord = nextBlockToReplace.yCoord;
+		this.zCoord = nextBlockToReplace.zCoord;
+		this.blockType = nextBlockToReplace.blockType;		
+	}
+
 	public TerraBlockCoord copy()
 	{
-		return new TerraBlockCoord(xCoord, yCoord, zCoord, biomeType, blockType);
+		return new TerraBlockCoord(xCoord, yCoord, zCoord, blockType);
 	}
 	
-	public boolean isBlockValid()
+	@Override
+	public boolean equals(Object obj) 
 	{
-		return(bValid);
+
+		if (!(obj instanceof TerraBlockCoord)) 
+		{
+			return false;
+		}
+		TerraBlockCoord other = (TerraBlockCoord) obj;
+		return this.xCoord == other.xCoord && this.yCoord == other.yCoord && this.zCoord == other.zCoord;
 	}
 	
-	public void setBlock(Block block)
-	{
-		blockType = block;
-	}
-	
-	public void setBlockValid(boolean bVal)
-	{
-		bValid = bVal;
-	}
+
+
 	public int getXCoord()
 	{
 		return(xCoord);
@@ -59,10 +63,6 @@ public class TerraBlockCoord
 		return(zCoord);
 	}
 	
-	public int getBiomeType()
-	{
-		return(biomeType);
-	}
 	
 	
 	public void moveXCoord(int nVal, boolean bAdd)
@@ -111,8 +111,19 @@ public class TerraBlockCoord
 
 	public void setYCoord(int y)
 	{
-		yCoord = y;
-		
+		yCoord = y;		
+	}
+	
+	@Override
+	public String toString() 
+	{
+		return "[" + this.xCoord + ", " + this.yCoord + ", " + this.zCoord + "]";
+	}
+
+	@Override
+	public int compareTo(TerraBlockCoord other) 
+	{
+		return this.xCoord == other.xCoord ? this.yCoord == other.yCoord ? this.zCoord - other.zCoord : this.yCoord - other.yCoord : this.xCoord - other.xCoord;
 	}
 
 }

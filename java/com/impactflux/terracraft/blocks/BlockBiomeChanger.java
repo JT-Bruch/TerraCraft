@@ -27,6 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockBiomeChanger extends BlockContainer
 {
+	private boolean m_bBlockActivated = false;
 	private IIcon textureSides;
 	private IIcon textureTopOn;
 	private IIcon textureTopOff;
@@ -50,16 +51,8 @@ public class BlockBiomeChanger extends BlockContainer
 		if (entityplayer.isSneaking()) {
 			return false;
 		}
-		if (!world.isRemote) {
-			entityplayer.openGui(TerraCraft.instance, 1, world, x, y, z);
-		}
-		BiomeGenBase blockBiomeInfo = world.getBiomeGenForCoords(x, y);
-		TerraBlockCoord originBlock = new TerraBlockCoord(x, y, z, blockBiomeInfo.biomeID, this);
-		
-		TerraBiomeChangeLogic.ReplaceBiome(world, originBlock);
-		
-		return true;
-
+		m_bBlockActivated = true;
+		return m_bBlockActivated;
 	}
 
 	

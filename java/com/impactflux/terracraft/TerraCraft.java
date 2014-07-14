@@ -88,7 +88,7 @@ public class TerraCraft
 		TerraFluids.initialize();
 		TerraItems.initialize();
 		TerraBlocks.initialize();
-		NetworkRegistry.INSTANCE.registerGuiHandler(TerraCraft.instance, new GuiHandler());
+
 	
 	}
 
