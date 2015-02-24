@@ -1,6 +1,5 @@
-Welcome to TerraCraft.  
+This foray into Java/Minecraft development has stopped for the time being due to work committments.
 
-   ImpactFlux Here!
       Ever decide you hate the biome that you are in after you built your entire base?  Don't you hate how the ores that you have mined don't regenerate?
    Never fear TerraCraft is here!
    
